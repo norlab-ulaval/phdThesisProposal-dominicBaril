@@ -1,0 +1,117 @@
+\documentclass[12pt,letterpaper,oneside]{article}
+
+\input{./latexGoodPractices/preamble}
+
+%==============================================================
+% FILL THIS SECTION
+
+%\newcommand{\projectTitle}{Optimisation de la trajectoire 3D au moyen de stations totales robotiques ou GNSS en vue de l'obtention d'une précision subcentimétrique pour l'amélioration de système de carthographie dynamique pour la robotique mobile} % Génération de la trajectoire 6D pour l'amélioration d'algorithme de cartographie pour les véhicules autonomes/robotique mobile
+\newcommand{\projectTitle}{Génération de trajectoires 6D pour l'amélioration d'algorithmes de cartographie pour les véhicules autonomes}
+\newcommand{\runningTitle}{Génération de trajectoires 6D}
+\newcommand{\projectStudent}{Maxime Vaidis}
+\newcommand{\projectStudentNIP}{111 251 718}
+\newcommand{\projectDate}{Novembre, 2022} 
+
+\newcommand{\projectSupervisor}{Prof. F. Pomerleau}
+\newcommand{\projectCoSupervisor}{Prof. P. Gigu\`{e}re}
+
+\newcommand{\afaire}[1]{\textcolor{red}{#1}}
+
+% Change to your specific bibliography file
+%\addbibresource{./latexGoodPractices/exampleReferences.bib}
+\addbibresource{./references.bib}
+\DeclareBibliographyCategory{nobibliography}
+\addtocategory{nobibliography}{Vaidis2021}
+%==============================================================
+
+% ---------------------------------------------------------------
+% Load style
+\input{phDThesis_ProposalStyle.tex}
+% ---------------------------------------------------------------
+
+% Colored text
+%\usepackage[dvipsnames]{xcolor}
+
+%\usepackage{subfig}
+\usepackage{graphicx}
+
+%\usepackage{ulem}
+
+\usepackage{array, tabularx} % FP: lire le fichier latex good practice
+\renewcommand{\arraystretch}{1.2} 
+
+% Fill the template with text
+\usepackage{lipsum}
+\newcommand{\lightlipsum}[1][0]{\textcolor{gray!50}{\lipsum[#1]}}
+
+% Customize enumerate list
+\usepackage{enumerate}
+
+\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{sidecap}
+\usepackage{subcaption,graphicx}
+
+\usepackage{longtable}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{20pt}%
+            {-2.5ex\@plus -1ex \@minus -.25ex}%
+            {1.25ex \@plus .25ex}%
+            {\normalfont\normalsize\bfseries}}
+            \makeatother
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC
+
+% Acronyms
+\acrodef{GNSS}{Géolocalisation et Navigation par Système de Satellites}
+\sisetup{locale = FR}
+
+\def\tableautorefname{table}
+\def\figureautorefname{figure}
+\def\equationautorefname{équation}
+\def\sectionautorefname{section}
+\def\subsectionautorefname{section}
+%================================================================
+\begin{document}
+\makeCustomTitle
+\thispagestyle{titlePage}
+
+% ---------------------------------------------------------------
+\input{src/Introduction}
+\newpage
+
+% ---------------------------------------------------------------
+\input{src/Submitted}
+\newpage
+
+% ---------------------------------------------------------------
+% \input{src/Experiments_done}
+
+% ---------------------------------------------------------------
+\input{src/Futur_work}
+\newpage
+
+% ---------------------------------------------------------------
+\input{src/Planning}
+\newpage
+
+% ---------------------------------------------------------------
+% \input{src/Planning_admin}
+% \newpage
+
+% ---------------------------------------------------------------
+\input{src/Conclusion}
+\newpage
+% ---------------------------------------------------------------
+\printbibliography
+\newpage
+
+% ---------------------------------------------------------------
+\begin{landscape}
+\input{src/Annexe}
+\end{landscape}
+\newpage
+
+\end{document}
+

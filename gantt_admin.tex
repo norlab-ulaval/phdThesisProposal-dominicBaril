@@ -1,0 +1,83 @@
+\definecolor{navyblue}{RGB}{21,80,130}
+\setganttlinklabel{f-s}{}
+
+\begin{ganttchart}[
+     %Specs 0.43 0.43 1
+     y unit title=0.43cm,
+     y unit chart=0.37cm,
+     x unit=1.1cm,  %1.2cm
+     vgrid={*{1}{draw=none},*{1}{black}},
+     title height=1,   %1
+     title label font=\bfseries\footnotesize,
+     % bar 0.4 10pts
+     bar/.style={fill=navyblue},
+     bar height=0.4,
+     bar label font=\footnotesize,
+     bar label node/.append style={left=10pt},  %10
+     % group 0 0.6 0.3 0.2 0.3 10pts
+     group right shift=0,
+     group top shift=0.6,
+     group height=.3,
+     group peaks width={0.2},
+     group peaks height={0.3},
+     group label node/.append style={left=10pt},
+     group label font=\bfseries\footnotesize,
+     % milestone 0.4 1 10pts
+     milestone/.append style={xscale=0.4, yscale=1},
+     milestone label node/.append style={left=10pt},
+     milestone label font=\itshape\footnotesize
+     ]{1}{10}
+    \gantttitle[]{2022}{2}
+    \gantttitle[]{2023}{8}
+    \\              
+    \gantttitle{N}{1} \gantttitle{D}{1} \gantttitle{J}{1} 
+    \gantttitle{F}{1} \gantttitle{M}{1} \gantttitle{A}{1} 
+    \gantttitle{M}{1} \gantttitle{J}{1} \gantttitle{J}{1}
+    \gantttitle{A}{1}
+    \\
+    %--------------------------------------       
+    \ganttgroup{Rédation article de journal}{1}{5}\\
+    
+    \ganttbar{Expériences}{1}{2}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{2}\\
+    
+    \ganttbar{Théorie}{1}{4}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{4}\\
+    
+    \ganttbar{Rédaction}{1}{5}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{5}\\
+	
+	\ganttmilestone{Article soumis}{5}\\
+	
+    %--------------------------------------       
+    \ganttgroup{Dépôt final}{6}{10} \\ 
+    
+    \ganttbar{Rédaction thèse}{6}{7}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{6}{7}\\
+    
+    \ganttmilestone{Dépôt initial}{7}\\
+    
+    \ganttbar{Préparation défense}{8}{9}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{8}{9}\\
+    
+    \ganttmilestone{Défense}{9}\\
+    
+    \ganttbar{Correction}{10}{10}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{10}{10}\\
+    
+    \ganttmilestone{Dépôt final}{10}\\
+    
+    %--------------------------------------       
+    \ganttgroup{Présentation article ICRA 2023}{4}{7} \\ 
+    
+    \ganttbar{Correction papier}{4}{4}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{4}{4}\\
+    
+    \ganttmilestone{Soumission correction}{4}\\
+    
+    \ganttbar{Préparation présentation}{6}{7}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{6}{7}\\
+    
+    \ganttmilestone{Présentation article}{7}\\
+    
+\end{ganttchart}

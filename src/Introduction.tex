@@ -1,0 +1,59 @@
+\section{Introduction}
+\label{sec:introduction}
+
+La robotique mobile est un vaste domaine regroupant de nombreux sous-domaines d'études qui diffèrent les uns des autres. 
+Au laboratoire ``Northern Robotics Laboratory'' (Norlab) dont je fais partie, les recherches sont menées dans deux champs d'études principalement: la localisation de plateforme semi-autonome ou autonome via des capteurs lidars qui sont utilisés pour cartographier l'environnement en 3D~\cite{Vlad2022}, puis l'amélioration des algorithmes de contrôle pour augmenter l'autonomie des plateformes utilisées dans différents types d'environnement, principalement les environnements boréaux et enneigés en forêt~\cite{Baril2020}.
+Dans ces deux champs d'études, l'amélioration de ces algorithmes passe par la réalisation de nombreux déploiements sur le terrain afin de générer des jeux de données contenant des vérités terrains de la position et de l'orientation de la plateforme robotique~\cite{Baril2022}.
+Ces vérités terrains sont par la suite utilisées pour comparer ces algorithmes et améliorer leur précision en itérant leur développement~\cite{Chahine2021}.
+La problématique visée par ma recherche est liée à ces utilisations:
+\begin{center}
+\textbf{Comment calculer et évaluer une trajectoire de véhicules le plus précisément possible ?}
+\end{center}
+
+L'utilité des vérités terrains dépend de leur exactitude ainsi que de leur précision. 
+Suivant les types d'équipements utilisés, le nombre de degrés de liberté de la plateforme voulu et l'environnement des expériences, l'incertitude sur les résultats varie de quelques millimètres à plusieurs mètres.
+Pour des expériences en intérieur, les caméras de détection de mouvements tel que Vicon~\cite{Delmerico2018, Merriaux2017} et Optitrack~\cite{Furtado2019} sont devenues la norme.
+La capture du mouvement est basée sur le suivi par infrarouge de marqueurs réfléchissants ou actifs et permet d'obtenir une précision submillimétrique à haute fréquence.
+Cependant, la superficie couverte par ce type d'équipement est réduite puisqu'elle dépend du nombre de caméras utilisé.
+De plus, la capture de données dépend de la luminosité et ne fonctionne pas en plein jour à l'extérieur.
+Un autre équipement utilisé pour sa précision est le suiveur laser ou interféromètre~\cite{Sang2017}.
+En échange de sa limite de portée d'une dizaine de mètres, la précision est de l'ordre du micro-mètre.
+Ce type d'équipement a une utilisation très limitée en extérieur.
+Pour des expériences en extérieur, deux équipements peuvent être utilisés: les \ac{GNSS}~\cite{Morales2007} et les stations totales~\cite{McGarey2018}.
+L'approche la plus utilisée en robotique mobile pour obtenir des vérités terrains consiste à utiliser les \ac{GNSS}.
+Ceux-ci permettent d'obtenir une précision centimétrique dans des environnements ouverts et peuvent être utilisés dans n'importe quel type d'environnements extérieurs.
+Cependant, dans des environnements forestiers, leur précision décroît de plusieurs mètres du fait de l'atténuation des signaux \ac{GNSS} par la végétation~\cite{Kubelka2020}.
+Les stations totales, par contre, peuvent être utilisées indépendamment de l'environnement et donne une précision sub-centimétrique.
+La collecte de données est uniquement limitée par la ligne de vue des stations totales par rapport à la plateforme robotique.
+Pour sa précision accrue en extérieur, nous avons choisi de nous concentrer sur l'utilisation de stations totales pour la génération de vérités terrains.
+
+Une station totale est un équipement d'arpentage permettant de mesurer dans son référentiel la position d'un marqueur réfléchissant ou d'un prisme au millimètre près.
+Les valeurs retournées par la station totale sont les valeurs angulaires de l'élévation et de l'azimut, ainsi que la valeur de la distance par rapport à la cible.
+Nous faisons ici la distinction entre une station totale et un théodolite qui est un instrument d'optique mesurant uniquement les valeurs angulaires.
+En robotique mobile, les stations totales utilisées peuvent généralement suivre dynamiquement une cible telle qu'un prisme.
+Dans ce cas-ci, elles sont appelées stations totales robotiques ou stations totales robotisées~\cite{Cheng2011}.
+À noter que mes recherches ne se composent que de stations totales robotiques.
+Une station totale robotique permet uniquement d'obtenir la position d'une cible sur une plateforme robotique en mouvement.
+Aussi, pour avoir l'orientation de la plateforme de façon dynamique, il est nécessaire d'ajouter trois prismes positionnés sur la plateforme robotique, et de les suivre par une station totale attitrée.
+L'utilisation de plusieurs stations totales robotiques pose trois défis importants lors de leur déploiement sur le terrain, ainsi que lors du traitement des données issues de celles-ci en vue de générer les vérités terrains.
+Le premier défi est de bâtir le système et de le déployer sur le terrain pour récolter les données avec une précision millimétrique.
+Le second est d'exprimer toutes les données dans le même référentiel tout en gardant cette précision millimétrique. 
+Enfin, une fois les données récoltées et exprimées dans le même référentiel, il faut être en mesure de générer la vérité terrain de l'expérience menée afin de pouvoir les exploiter.
+
+Les trois problématiques qui segmenteront mes recherches sont donc:
+
+\begin{enumerate}\bfseries
+  	\item Comment concevoir un système basé sur trois stations totales robotiques pour générer des vérités terrains en six degrés de liberté ?
+  	\item Comment améliorer la précision de ce système de trois stations totales robotiques ?
+	\item Comment utiliser l'incertitude évaluée par le système de stations totales robotiques lors de la génération des vérités terrains et de l'évaluation de trajectoires ?
+\end{enumerate}
+
+Les recherches que je mène depuis le début de mon doctorat ont pour but de répondre à ces trois problématiques.
+Auparavant, aucun système utilisant trois stations totales robotiques n'avait été créé et aucun de ce type n'a été utilisé pour la génération de vérité terrain.
+Je suis à l'initiative du développement de ce type de système à trois stations totales et de l'exploitation de celui-ci sur le terrain.
+Depuis plus d'un an, ce système a permis de générer des jeux de données totalisant plus de trente kilomètres de trajectoire de plateformes robotiques.
+
+En vue de ma proposition de thèse, le présent document vise à synthétiser l'état des recherches menées ainsi que celles me restant à effectuer.
+La \autoref{sec:papiers_soumis} détaillera mes publications ainsi que leur contenu en rapport avec mes problématiques à résoudre.
+Dans la \autoref{sec:recherches_futures} sera détaillée les recherches futures me restant à faire avant mon dépôt initial.
+Enfin, la \autoref{sec:calendrier} conclura cette proposition de thèse avec le calendrier de mon dépôt final.

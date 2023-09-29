@@ -1,0 +1,101 @@
+% DESSINER UNE FRISE CHRONOLOGIQUE
+% Article sur TEKIPAKI (Alexander Delaporte) =
+% https://tekipaki.hypotheses.org/?p=393
+
+% Déclaration du type de document
+\documentclass{standalone}
+
+% Déclaration des packages
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+
+% Librairie timeline par Claudio Fiandrino
+% https://github.com/cfiandra/timeline
+\input{tikzlibrarytimeline.code}
+
+% Début du document
+\begin{document}
+
+% Limiter la taille de l'image à une largeur de colonne (ici colonne = largeur du document)
+\resizebox{\columnwidth}{!}{
+
+% Environnement "tikzpicture" pour tracer l'image
+\begin{tikzpicture}[timespan={}]
+
+  % Déclaration de la "timeline" (bande noire avec intervalles temporels)
+  \timeline[custom interval=true]{2019,2020,2021,2022,2023}
+  
+  % Déclaration des "phases" (= périodes représentées par des cercles)
+   \begin{phases}
+   % FORMATION
+     % Cours 2019-2020
+     \phase{between week=1 and 2 in 0.5, involvement degree=7cm,phase color=green!50!black}
+     
+    % DARPA 
+     % DARPA Urban
+     \phase{between week=2 and 3 in 0.14, involvement degree=1.5cm, color=orange}
+    % DARPA finals
+     \phase{between week=3 and 4 in 0.65, involvement degree=2.6cm, color=orange}
+     
+    % Stationt totales
+     % Reception TS
+     \phase{between week=2 and 3 in 0.6, involvement degree=3cm, color=blue}
+     % CRV 2021
+     \phase{between week=3 and 4 in 0.01, involvement degree=2.5cm, color=blue}
+     % ICRA 2023
+     \phase{between week=4 and 5 in 0.38, involvement degree=7cm, color=blue}
+     
+    % Annexes
+     % Evaluation skid steer
+     \phase{between week=2 and 3 in 0.32, involvement degree=1cm, color=red}
+     % Improving Lie Algebra
+     \phase{between week=2 and 3 in 0.8, involvement degree=1cm, color=red}
+     % Mapping in unstructured
+     \phase{between week=2 and 3 in 0.92, involvement degree=1cm, color=red}
+     % Kilometer scale autonomous
+     \phase{between week=3 and 4 in 0.33, involvement degree=1.8cm, color=red}
+     % Road line detection
+     \phase{between week=3 and 4 in 0.9, involvement degree=0.8cm, color=red}
+     % IROS 2022
+     \phase{between week=4 and 5 in 0.1, involvement degree=1.5cm, color=red}
+   \end{phases}
+   
+   % Déclaration des "nodes" (= étiquettes aux extrémités de la frise, non utilisées ici)
+   % /!\ Ne pas oublier le point-virgule final
+   % Décommenter une des deux lignes suivantes pour faire apparaître un node, ajuster les paramètres
+   % \node [xshift=-0.6cm,yshift=1cm,anchor=east,font=\Large\bfseries] at (phase-0.180) {Haut};
+   %\node [xshift=-0.6cm,yshift=-1cm,anchor=east,font=\Large\bfseries] at (phase-0.180) {Bas};
+   
+   % Déclaration des "milestones" (= étiquettes des phases)
+   % Au-dessus de la ligne
+  \begin{scope}{text options={above}}
+     \addmilestone{at=phase-1.90,direction=90:1.5cm,text={Cours}}
+     \addmilestone{at=phase-2.270,direction=270:1.5cm,text={DARPA Urban}}
+     \addmilestone{at=phase-3.90,direction=90:1.5cm,text={DARPA Finals}}
+     \addmilestone{at=phase-4.270,direction=270:2.5cm,text={Reception des équipements et développement prototype}}
+     \addmilestone{at=phase-5.90,direction=90:1.5cm,text={CRV 2021}}
+     \addmilestone{at=phase-6.270,direction=270:1.5cm,text={ICRA 2023}}
+     \addmilestone{at=phase-7.90,direction=90:1.5cm,text={Evaluation skid steer}}
+     \addmilestone{at=phase-8.270,direction=270:1.75cm,text={Improving Lie Algebra}}
+     \addmilestone{at=phase-9.90,direction=90:1.5cm,text={Mapping in unstructured}}
+     \addmilestone{at=phase-10.270,direction=270:2cm,text={Kilometer scale autonomous}}
+     \addmilestone{at=phase-11.270,direction=270:1.5cm,text={Road line detection}}
+     \addmilestone{at=phase-12.90,direction=90:1.5cm,text={IROS 2022}}
+     
+    %  \addmilestone{at=phase-4.90,direction=90:4cm,text={Enseignant FLE}}
+    %  \addmilestone{at=phase-5.90,direction=90:2cm,text={Ingénieur pédagogique}}
+    %  \addmilestone{at=phase-6.90,direction=90:2cm,text={Tuteur}}
+    %  \addmilestone{at=phase-7.90,direction=90:3cm,text={Ingénieur d'études}}
+    %  \addmilestone{at=phase-8.90,direction=90:1cm,text={Ingénieur d'études}}
+  \end{scope}
+%   % En-dessous de la ligne
+%   \begin{scope}{text options={below}}
+%      \addmilestone{at=phase-1.270,direction=270:2cm,text={Master FLE}}
+%      \addmilestone{at=phase-2.270,direction=270:2cm,text={Master LTTAC}}
+%   \end{scope}
+   
+\end{tikzpicture}
+    
+} % fermeture de \resizebox
+
+\end{document}

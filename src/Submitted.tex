@@ -1,0 +1,145 @@
+\section{Publications des recherches menées}
+\label{sec:papiers_soumis}
+
+Cette section présente mes publications effectuées tout au long de mon doctorat, ainsi que leur lien avec mes recherches.
+Dans un premier temps est présenté le format de soumission d'un article avec la description du rôle des co-auteurs en général. 
+Par la suite sont présentés les articles que j'ai publiés en tant que premier auteur, plus précisément deux articles correspondant au deux problématiques initialement énoncées dans l'introduction précédente.
+Enfin sont présentés les articles à la publication desquels j'ai participé en tant que co-auteur, avec une courte description de la problématique abordée.
+
+\subsection{Format de soumission des papiers avec co-auteurs}
+
+Le champ de la robotique mobile est un domaine qui exige une expertise dans plusieurs domaines.
+C'est pourquoi mes publications ont été faites en collaboration avec plusieurs co-auteurs œuvrant dans des domaines connexes.
+Typiquement, le premier auteur est la personne dirigeant les efforts et tâches à effectuer pour la publication du papier (i.e. typiquement un étudiant faisant de la recherche), tandis que les derniers co-auteurs sont ceux conseillant sur la stratégie de publications ainsi que sur la vision à long terme du projet (i.e. typiquement un professeur ou chercheur supervisant le travail de l'étudiant).
+Quant aux autres co-auteurs, ils aident à effectuer plusieurs parties du travail de recherches, que ce soit pour aider à faire les expériences sur le terrain, pour traiter les résultats, pour finaliser l'écriture de la théorie ou pour aider à la rédaction.
+Mon rôle en tant que premier auteur fut de définir la problématique que les papiers aborderont, de travailler sur la théorie et la partie expérimentale avec le traitement des données, et enfin la supervision de la rédaction du papier.
+
+\subsection{Papier soumis et accepté à CRV 2021}
+
+Le premier article que j'ai soumis et qui a été accepté fut présenté à la conférence de robotique mobile appelée ``Conference on Robot and Vision (CRV)'', en mai 2021.
+Cet article répond à la première problématique de mes travaux de recherches, à savoir développer et déployer sur le terrain un système de trois stations totales robotiques afin de collecter les données permettant de reconstruire par la suite la vérité terrain de la plateforme robotique.
+Concernant cet article, j'ai rédigé la majeure partie du texte, développé le code du système, fait les expériences sur le terrain et interprété les résultats obtenus.
+La citation complète de ma publication est la suivante:
+
+\begin{center}
+    \textbf{\fullcite{Vaidis2021}}
+\end{center}
+
+Ce papier effectue dans un premier temps un état de l'art des différentes utilisations des stations totales en robotique mobile, et la littérature des méthodes de génération des vérités terrains.
+Le système de trois stations totales est par la suite présenté en détail.
+Les données récoltées sont décrites, ainsi que la communication employée pour les transmettre sur de longues distances (protocole LoRa) avec une synchronisation temporelle des horloges des différents ordinateurs.
+Pour exprimer toutes les données dans le même référentiel, une calibration extrinsèque simple faite avec des points de contrôle statiques a été mise en place. 
+Enfin, la vérité terrain de la plateforme robotique peut-être reconstruite grâce à une méthode se basant sur une minimisation point-à-point.
+
+Différentes expériences ont été réalisées dans le but d'estimer la précision de ce système de trois stations totales robotiques.
+Dans un premier temps, des expériences ont permis de caractériser cette précision qui est de \SI{1}{mm} et \SI{0.06}{deg} en position statique de la plateforme robotique, ainsi que de \SI{10}{mm} et \SI{0.6}{deg} lorsque la plateforme est en mouvement.
+Il a été également mis en évidence que des accélérations brusques augmentaient l'erreur en position/orientation de manière conséquente (\SI{30}{mm} à \SI{250}{mm} en plus).
+Une relation entre ces erreurs et l'incertitude finale sur le résultat de la pose de la plateforme robotique a pu être établie de cette observation.
+Dans un deuxième temps, une comparaison entre le résultat donné par les stations totales robotiques et les \ac{GNSS} a été faite dans différents environnements, plus précisément soit dans un environnement ouvert où les signaux \ac{GNSS} ne sont pas perturbés, soit dans un environnement forestier où la précision des \ac{GNSS} diminue grandement.
+Dans un environnement ouvert, les résultats donnés par les \ac{GNSS} sont équivalents à ceux des stations totales robotiques pour les phases dynamiques.
+Puis, comme attendu, dans un environnement forestier, les stations totales robotiques performent bien mieux que les \ac{GNSS} dont l'erreur peut varier de plusieurs mètres suivant la densité de la végétation.
+
+En conclusion de ce premier article, nous avons démontré la faisabilité d'un système utilisant plusieurs stations totales robotiques afin de pouvoir générer la vérité terrain d'une plateforme robotique en mouvement.
+Les performances de notre système ont pu être mesurées et évaluées dans différents types d'environnements.
+Une comparaison avec les \ac{GNSS}, qui est la méthode la plus utilisée pour prendre des vérités terrains, a été effectuée et a démontré que notre système pouvait être plus précis dans des environnements où les signaux \ac{GNSS} sont perturbés.
+Lors des expériences menées, il a été observé que la précision de la calibration extrinsèque entre les stations totales robotiques était vraiment importante pour la précision du résultat final.
+Cette calibration extrinsèque prenait également beaucoup de temps à être menée sur le terrain (de \SI{20}{min} à \SI{60}{min}).
+Des travaux futurs concernant l'amélioration de la méthode de calibration extrinsèque sont prévus en vue d'améliorer sa précision ainsi que sa faisabilité sur le terrain.
+Une étude de l'influence de la position des prismes positionnés sur la plateforme robotique par rapport aux résultats donnés par les vérités terrains générées sera également effectuée.
+
+\subsection{Papier soumis à ICRA 2023}
+
+Le second article sur lequel j'ai travaillé a été soumis à la conférence appelée ``International Conference on Robotics and Automation (ICRA)'', en septembre 2023.
+Cet article se concentre sur les différentes méthodes de calibration extrinsèque employées pour exprimer les données provenant de plusieurs stations totales robotiques dans un référentiel commun, et répond donc à la deuxième problématique de mes travaux de recherches.
+Dans cet article, nous proposons une nouvelle méthode dynamique qui se base sur les trois prismes suivis par nos trois stations totales robotiques.
+Une comparaison est effectuée entre toutes les méthodes étudiées: la nôtre augmente la précision de \SI{25}{\%} par rapport à la meilleure des méthodes utilisées dans l'état de l'art.
+Pour cet article, j'ai rédigé une bonne partie du texte, développé une partie du code pour le traitement des données, fait les expériences sur le terrain, et interprété les résultats obtenus.
+La citation complète de ma publication est la suivante:
+
+\begin{center}
+    \textbf{\fullcite{Vaidis2023}}
+\end{center}
+
+L'article décrit dans un premier temps l'état de l'art à propos des différentes méthodes de calibration extrinsèque existantes en géomatique et arpentage.
+La première méthode est appelée calibration en deux-points.
+Elle a uniquement besoin de deux points statiques dont on connaît très précisément la position relative, au moins au millimètre près.
+Les positions sont mesurées par chacune des stations totales et la méthode nous donne les transformations rigides ente les référentiels respectifs.
+La seconde méthode, qui est la plus utilisée pour faire une calibration extrinsèque, est celle des points statiques de calibration.
+Cette méthode consiste à prendre les positions statiques de nombreux points de contrôles, à recaler leurs positions, ce qui nous donne les transformations rigides entre les référentiels respectifs des stations totales.
+La troisième méthode est identique à celle précédemment citée, mais la position des points de contrôle est prise de manière dynamique avec un prisme en mouvement. 
+Toutes ces méthodes, en plus de la nouvelle que nous proposons, sont décrites mathématiquement dans la section théorie du papier.
+L'état de l'art du papier donne également les principales sources de bruits à prendre en compte lors d'expérimentations avec plusieurs stations totales robotiques.
+
+La nouvelle méthode de calibration extrinsèque que nous proposons se base sur les distances inter-prismes positionnées sur la plateforme robotique.
+Les distances pouvant être déterminées au millimètre près avec une station totale, nous pouvons minimiser la distance de ces distances inter-prismes avec une fonction de coût optimisée dans l'algèbre de Lie par une méthode des moindres carrés. 
+Le résultat de cette minimisation nous donne directement les transformations rigides entre les référentiels des différentes stations totales robotiques.
+Pour pouvoir appliquer cette minimisation, nous pré-traitons les données brutes provenant des stations totales avec un pipeline dédié filtrant les données dans un premier temps. 
+Puis, dans un deuxième temps, celles-ci sont interpolées permettant les mesures des stations totales à un même instant.
+Ceci n'est pas le cas habituellement puisque les données sont prises de manière asynchrone.
+
+Afin de comparer les différentes méthodes, un jeu de données totalisant plus de \SI{30}{km} de trajectoire de la plateforme robotique a pu être enregistré lors de 40 expériences différentes: elles ont été réalisées entre fin février 2022 et septembre 2022 lors de 15 déploiements.
+Ces déploiements se déroulèrent dans deux types d'environnement: à l'extérieur, tout d'abord sur le \underline{campus de l'Université Laval} où se situent des bases de calibrations statiques permettant de réaliser la calibration en deux-points, puis dans les \underline{tunnels de l'Université Laval}, longs et droits sur plusieurs centaines de mètres à certains endroits.
+Le choix s'est porté sur ces lieux du fait de leurs différentes configurations spatiales et des expériences de cartographie 3D avec lidars qu'y mène le Norlab.
+Comme suite à chaque déploiement, une station totale a mesuré la position des prismes et de certains capteurs avec précision afin que notre nouvelle méthode de calibration extrinsèque puisse être appliquée.
+
+Grâce à ce jeu de données, des tests de sensibilités et d'ablations ont pu être effectués sur les différents paramètres et modules du pipeline de pré-traitement.
+Il a été démontré que le pipeline augmente la précision des résultats de \SI{18}{\%} grâce au filtrage des données erronées.
+De plus, une simple interpolation linéaire des données est suffisante en comparaison d'une utilisation de ``Gaussian Process'' pour laquelle une meilleure précision était attendue.
+La comparaison entre les différentes méthodes de calibration extrinsèque nous démontre que la nôtre est la plus précise.
+Son exactitude est cependant plus faible de quelques millimètres en comparaison de la méthode des points de contrôles statiques.
+Globalement, toutes les méthodes sont plus précises que l'utilisation de \ac{GNSS}.
+
+Dans cet article, nous avons proposé une nouvelle méthode de calibration extrinsèque qui ne se base pas sur la mesure de points statiques, ce qui permet d'augmenter le temps consacré aux expériences lors de déploiements.
+Cette nouvelle méthode s'accompagne d'un pipeline de pré-traitement des données venant des stations totales robotiques. 
+L'utilisation du pipeline augmente de \SI{18}{\%} la précision des résultats, et ceux-ci sont plus précis de \SI{25}{\%} car combinés à notre nouvelle méthode de calibration extrinsèque.
+Notre nouvelle méthode de calibration est limitée dans certains types d'environnements comme les tunnels, où les trajectoires sont longues et droites, ce qui empêche notre minimisation de converger vers le résultat attendu.
+Des simulations plus poussées seront effectuées afin de mieux caractériser ces limites d'utilisation.
+La position des prismes sur la plateforme robotique a également un effet sur le résultat, qui doit être davantage quantifié avec précision. 
+Cet article met à notre disposition tous les moyens de recueillir des données précises permettant de reconstruire les vérités terrains précises qui seront utiles pour l'évaluation des algorithmes de cartographie 3D.
+Le code ainsi que le jeu de données utilisés sont disponibles en ligne \footnote{\url{https://github.com/norlab-ulaval/RTS_Extrinsic_Calibration}}.
+
+\subsection{Autres papiers}
+
+\textbf{\fullcite{Vlad2022}}: 
+Ce papier présente un moyen d'améliorer la précision de la localisation par lidar grâce à la prise en compte du vecteur de gravité donné par une centrale inertielle. 
+Pour ce papier, j'ai effectué les comparaisons de trajectoire entre celles données par notre algorithme de cartographie amélioré et celles des vérités terrains prises par des \ac{GNSS}. 
+J'ai également apporté mon aide à la prise de jeux de données sur le terrain et à la rédaction.
+\\
+
+\textbf{\fullcite{Baril2022}}:
+Cet article de journal présente un pipeline de ``teach-and-repeat'' qui a été testé en forêt Montmorency. 
+Avec ce pipeline, la plateforme robotique a pu effectuer près de \SI{20}{km} de trajectoire en toute autonomie, dans des conditions boréales. 
+Pour ce faire, j'ai enregistré sur le terrain des données de vérités terrains à l'aide de mon système de stations totales et de \ac{GNSS}, puis j'ai traité les données recueillies. 
+J'ai également participé à la rédaction de l'article.
+\\
+
+\textbf{\fullcite{Roucek2021}}:
+En février 2020, j'ai participé à la compétition du DARPA (``Defense Advanced Research Projects Agency'') Urban Challenge. 
+Ce papier présente le système utilisé lors de la compétition, ainsi que les résultats obtenus. 
+J'ai participé à la compétition, traité les données en lien avec la cartographie 3D et effectué l'évaluation de la précision de notre algorithme pour la localisation des plateformes utilisées.
+\\
+
+\textbf{\fullcite{Chahine2021}}: 
+Ce papier présente un algorithme de cartographie 3D se basant sur différents capteurs visant ainsi à améliorer la précision du résultat (lidar, caméra et \ac{GNSS} ensemble).
+
+C'est dans ce papier que j'ai présenté pour la première fois le début de mes recherches avec mon système de stations totales. 
+Mais seule une station totale a pu alors être utilisée du fait du manque d'espace pour les cibles sur le sac à dos avec les capteurs.
+J'ai aidé à la prise de données sur le terrain, ainsi qu'à leur traitement pour l'obtention de la vérité terrain, et j'ai également participé à la rédaction de l'article.
+\\
+
+\textbf{\fullcite{Baril2020}}:
+Cet article présente l'évaluation de modèle cinématique sur différents types de terrains: asphalte ou neige. 
+Le but de l'article est de présenter les résultats des différents modèles et de discuter de leur efficacité. 
+Pour cet article, j'ai pris des données sur le terrain et j'ai traité celles provenant de notre algorithme de cartographie. 
+J'ai également aidé à la rédaction.
+\\
+
+\textbf{\fullcite{Laconte2021}}:
+Ce papier présente l'état de l'art pour les différentes méthodes de localisation de véhicules sur des autoroutes, principalement par la détection des lignes via des systèmes de caméras et de lidars.
+J'ai aidé à la rédaction de l'article. Aucune donnée n'a été prise sur le terrain.
+\\
+
+\textbf{\fullcite{Vaidis2020}}:
+Cet article est un article de ``workshop'' pour la conférence ICRA 2021, en ce sens non pertinent pour ma thèse.
+Il aborde l'amélioration de notre algorithme de cartographie avec des contraintes de rotation fixées dans l'algèbre de Lie via des données issues d'une centrale inertielle.
+Pour ce papier, j'ai effectué les expériences, traité les données et rédigé la grande partie de l'article.
