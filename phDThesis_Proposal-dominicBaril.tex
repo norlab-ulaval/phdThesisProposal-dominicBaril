@@ -6,11 +6,11 @@
 % FILL THIS SECTION
 
 %\newcommand{\projectTitle}{Optimisation de la trajectoire 3D au moyen de stations totales robotiques ou GNSS en vue de l'obtention d'une précision subcentimétrique pour l'amélioration de système de carthographie dynamique pour la robotique mobile} % Génération de la trajectoire 6D pour l'amélioration d'algorithme de cartographie pour les véhicules autonomes/robotique mobile
-\newcommand{\projectTitle}{Génération de trajectoires 6D pour l'amélioration d'algorithmes de cartographie pour les véhicules autonomes}
-\newcommand{\runningTitle}{Génération de trajectoires 6D}
-\newcommand{\projectStudent}{Maxime Vaidis}
-\newcommand{\projectStudentNIP}{111 251 718}
-\newcommand{\projectDate}{Novembre, 2022} 
+\newcommand{\projectTitle}{Improving the robustness of motion modelling and control for mobile robots in harsh conditions}
+\newcommand{\runningTitle}{Improving the robustness of motion modelling and control for mobile robots in harsh conditions}
+\newcommand{\projectStudent}{Dominic Baril}
+\newcommand{\projectStudentNIP}{111 103 819}
+\newcommand{\projectDate}{December 2023} 
 
 \newcommand{\projectSupervisor}{Prof. F. Pomerleau}
 \newcommand{\projectCoSupervisor}{Prof. P. Gigu\`{e}re}
@@ -54,6 +54,8 @@
 
 \usepackage{longtable}
 
+\acrodef{UGV}{uncrewed ground vehicle}
+
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{20pt}%
             {-2.5ex\@plus -1ex \@minus -.25ex}%
@@ -65,6 +67,9 @@
 
 % Acronyms
 \acrodef{GNSS}{Géolocalisation et Navigation par Système de Satellites}
+\acrodef{ICP}{iterative closest point}
+\acrodef{ROC}{radius of curvature}
+\acrodef{SSMR}{skid-steering mobile robot}
 \sisetup{locale = FR}
 
 \def\tableautorefname{table}
@@ -77,24 +82,25 @@
 \makeCustomTitle
 \thispagestyle{titlePage}
 
+
 % ---------------------------------------------------------------
 \input{src/Introduction}
-\newpage
+%\newpage
 
 % ---------------------------------------------------------------
 \input{src/Submitted}
-\newpage
+%\newpage
 
 % ---------------------------------------------------------------
 % \input{src/Experiments_done}
 
 % ---------------------------------------------------------------
 \input{src/Futur_work}
-\newpage
+%\newpage
 
 % ---------------------------------------------------------------
 \input{src/Planning}
-\newpage
+%\newpage
 
 % ---------------------------------------------------------------
 % \input{src/Planning_admin}

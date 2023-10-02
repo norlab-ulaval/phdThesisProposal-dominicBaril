@@ -1,53 +1,53 @@
-\section{Publications des recherches menées}
-\label{sec:papiers_soumis}
+\section{Current scientific production}
+\label{sec:submitted}
 
-Cette section présente mes publications effectuées tout au long de mon doctorat, ainsi que leur lien avec mes recherches.
-Dans un premier temps est présenté le format de soumission d'un article avec la description du rôle des co-auteurs en général. 
-Par la suite sont présentés les articles que j'ai publiés en tant que premier auteur, plus précisément deux articles correspondant au deux problématiques initialement énoncées dans l'introduction précédente.
-Enfin sont présentés les articles à la publication desquels j'ai participé en tant que co-auteur, avec une courte description de la problématique abordée.
+This section describes the current scientific done through this Ph.D. thesis work and collaborations done with other researchers. 
+First, the three articles conducted directly for which I acted as first author.
+All of these scientific contributions are related to the subproblems states in~\autoref{sec:introduction}.
+Then all of the worth in which I have participated as co-author is described briefly.
+Since mobile robotics is a field requiring various expertise and human ressources to conduct field deployments, all scientific production presented includes multiple co-authors.
 
-\subsection{Format de soumission des papiers avec co-auteurs}
+%\subsection{Format de soumission des papiers avec co-auteurs}
 
-Le champ de la robotique mobile est un domaine qui exige une expertise dans plusieurs domaines.
-C'est pourquoi mes publications ont été faites en collaboration avec plusieurs co-auteurs œuvrant dans des domaines connexes.
-Typiquement, le premier auteur est la personne dirigeant les efforts et tâches à effectuer pour la publication du papier (i.e. typiquement un étudiant faisant de la recherche), tandis que les derniers co-auteurs sont ceux conseillant sur la stratégie de publications ainsi que sur la vision à long terme du projet (i.e. typiquement un professeur ou chercheur supervisant le travail de l'étudiant).
-Quant aux autres co-auteurs, ils aident à effectuer plusieurs parties du travail de recherches, que ce soit pour aider à faire les expériences sur le terrain, pour traiter les résultats, pour finaliser l'écriture de la théorie ou pour aider à la rédaction.
-Mon rôle en tant que premier auteur fut de définir la problématique que les papiers aborderont, de travailler sur la théorie et la partie expérimentale avec le traitement des données, et enfin la supervision de la rédaction du papier.
+%Le champ de la robotique mobile est un domaine qui exige une expertise dans plusieurs domaines.
+%C'est pourquoi mes publications ont été faites en collaboration avec plusieurs co-auteurs œuvrant dans des domaines connexes.
+%Typiquement, le premier auteur est la personne dirigeant les efforts et tâches à effectuer pour la publication du papier (i.e. typiquement un étudiant faisant de la recherche), tandis que les derniers co-auteurs sont ceux conseillant sur la stratégie de publications ainsi que sur la vision à long terme du projet (i.e. typiquement un professeur ou chercheur supervisant le travail de l'étudiant).
+%Quant aux autres co-auteurs, ils aident à effectuer plusieurs parties du travail de recherches, que ce soit pour aider à faire les expériences sur le terrain, pour traiter les résultats, pour finaliser l'écriture de la théorie ou pour aider à la rédaction.
+%Mon rôle en tant que premier auteur fut de définir la problématique que les papiers aborderont, de travailler sur la théorie et la partie expérimentale avec le traitement des données, et enfin la supervision de la rédaction du papier.
 
-\subsection{Papier soumis et accepté à CRV 2021}
+\subsection{Articles published and submitted as first author}
+\begin{center}
+	\textbf{\fullcite{Baril2020}}
+\end{center}
+The first article that I have published was submitted to the ``Conference on Robot and Vision (CRV)'', in May 2020.
+This article aims to evaluate the performance of~\acp{SSMR} kinematic motion models on dry concrete and snow-covered terrain.
+For this article
+In this article, we collected a total of~\SI{2}{\kilo\meter} of human driving data to evaluate four kinematic models from the literature.
+We leverage lidar point cloud registration based on the~\ac{ICP} algorithm to generate ground truth localization.
+The resulting contributions are as follows:
+\begin{enumerate}
+	\item validate their fitness for a heavier platform on a relatively uniform concrete terrain;
+	\item evaluate their performance for snow-covered terrain using more than \SI{2}{\kilo\meter} of trajectories traveled; and
+	\item highlight the impact of angular motion on the accuracy of \acp{SSMR} kinematic modeling.
+\end{enumerate}
 
-Le premier article que j'ai soumis et qui a été accepté fut présenté à la conférence de robotique mobile appelée ``Conference on Robot and Vision (CRV)'', en mai 2021.
-Cet article répond à la première problématique de mes travaux de recherches, à savoir développer et déployer sur le terrain un système de trois stations totales robotiques afin de collecter les données permettant de reconstruire par la suite la vérité terrain de la plateforme robotique.
-Concernant cet article, j'ai rédigé la majeure partie du texte, développé le code du système, fait les expériences sur le terrain et interprété les résultats obtenus.
-La citation complète de ma publication est la suivante:
+The four kinematic models evaluated are the extended differential-drive asymmetrical, the extended differential-drive symmetrical~\citep{Mandow2007}, the full linear~\citep{Anousaki2004} and~\ac{ROC}-based~\citep{Wang2015}.
+We also show that models with less parameters tend to perform better for angular prediction and models with more parameters perform better for translation prediction, due to their ability to predict non-zero lateral motion.
+However, once trained, the performance of all models is similar for both terrain types, suggesting that all kinematic models evaluated behave similarly.
+The largest prediction error occurs when the vehicle's angular velocity is at its maximum, which leads to the highest amount of vehicle slip.
+
+Additionally, training kinematic models with empirical driving data leads to significant prediction error reduction, for both concrete and snow-covered terrain.
+The relation between training window and prediction error is also studied in this work, clearly showing that models perform best when predicting for the same horizon for which they were trained.
+We show that for the same commanded angular velocity, angular velocity is higher on snow-covered terrain than concrete. 
+This phenomenon is due to the high friction caused by the tire deformation occurring during skidding on concrete, compared to soft terrain deformation on snow-covered terrain.
+
+The take home message for this published paper was that kinematic motion models are adequate for predicting~\ac{SSMR} motion, both on dry concrete and snow-covered terrain, however they require a training dataset dependent to vehicle and terrain properties.
+During the experimental work conducted for this paper, we imitated similar work by having a human operator to stimulate as many commands as possible, however this process lead to biased command stimulation and forward-only driving and proved to be time-consuming.
+Since deploying~\acp{UGV} in off-road environments is a complex endeavor, reducing the time requiring to generate a motion model that is accurate enough for stable autonomous navigation is key.
 
 \begin{center}
-    \textbf{\fullcite{Vaidis2021}}
+	\textbf{\fullcite{Baril2023}}
 \end{center}
-
-Ce papier effectue dans un premier temps un état de l'art des différentes utilisations des stations totales en robotique mobile, et la littérature des méthodes de génération des vérités terrains.
-Le système de trois stations totales est par la suite présenté en détail.
-Les données récoltées sont décrites, ainsi que la communication employée pour les transmettre sur de longues distances (protocole LoRa) avec une synchronisation temporelle des horloges des différents ordinateurs.
-Pour exprimer toutes les données dans le même référentiel, une calibration extrinsèque simple faite avec des points de contrôle statiques a été mise en place. 
-Enfin, la vérité terrain de la plateforme robotique peut-être reconstruite grâce à une méthode se basant sur une minimisation point-à-point.
-
-Différentes expériences ont été réalisées dans le but d'estimer la précision de ce système de trois stations totales robotiques.
-Dans un premier temps, des expériences ont permis de caractériser cette précision qui est de \SI{1}{mm} et \SI{0.06}{deg} en position statique de la plateforme robotique, ainsi que de \SI{10}{mm} et \SI{0.6}{deg} lorsque la plateforme est en mouvement.
-Il a été également mis en évidence que des accélérations brusques augmentaient l'erreur en position/orientation de manière conséquente (\SI{30}{mm} à \SI{250}{mm} en plus).
-Une relation entre ces erreurs et l'incertitude finale sur le résultat de la pose de la plateforme robotique a pu être établie de cette observation.
-Dans un deuxième temps, une comparaison entre le résultat donné par les stations totales robotiques et les \ac{GNSS} a été faite dans différents environnements, plus précisément soit dans un environnement ouvert où les signaux \ac{GNSS} ne sont pas perturbés, soit dans un environnement forestier où la précision des \ac{GNSS} diminue grandement.
-Dans un environnement ouvert, les résultats donnés par les \ac{GNSS} sont équivalents à ceux des stations totales robotiques pour les phases dynamiques.
-Puis, comme attendu, dans un environnement forestier, les stations totales robotiques performent bien mieux que les \ac{GNSS} dont l'erreur peut varier de plusieurs mètres suivant la densité de la végétation.
-
-En conclusion de ce premier article, nous avons démontré la faisabilité d'un système utilisant plusieurs stations totales robotiques afin de pouvoir générer la vérité terrain d'une plateforme robotique en mouvement.
-Les performances de notre système ont pu être mesurées et évaluées dans différents types d'environnements.
-Une comparaison avec les \ac{GNSS}, qui est la méthode la plus utilisée pour prendre des vérités terrains, a été effectuée et a démontré que notre système pouvait être plus précis dans des environnements où les signaux \ac{GNSS} sont perturbés.
-Lors des expériences menées, il a été observé que la précision de la calibration extrinsèque entre les stations totales robotiques était vraiment importante pour la précision du résultat final.
-Cette calibration extrinsèque prenait également beaucoup de temps à être menée sur le terrain (de \SI{20}{min} à \SI{60}{min}).
-Des travaux futurs concernant l'amélioration de la méthode de calibration extrinsèque sont prévus en vue d'améliorer sa précision ainsi que sa faisabilité sur le terrain.
-Une étude de l'influence de la position des prismes positionnés sur la plateforme robotique par rapport aux résultats donnés par les vérités terrains générées sera également effectuée.
-
-\subsection{Papier soumis à ICRA 2023}
 
 Le second article sur lequel j'ai travaillé a été soumis à la conférence appelée ``International Conference on Robotics and Automation (ICRA)'', en septembre 2023.
 Cet article se concentre sur les différentes méthodes de calibration extrinsèque employées pour exprimer les données provenant de plusieurs stations totales robotiques dans un référentiel commun, et répond donc à la deuxième problématique de mes travaux de recherches.
@@ -55,10 +55,6 @@ Dans cet article, nous proposons une nouvelle méthode dynamique qui se base sur
 Une comparaison est effectuée entre toutes les méthodes étudiées: la nôtre augmente la précision de \SI{25}{\%} par rapport à la meilleure des méthodes utilisées dans l'état de l'art.
 Pour cet article, j'ai rédigé une bonne partie du texte, développé une partie du code pour le traitement des données, fait les expériences sur le terrain, et interprété les résultats obtenus.
 La citation complète de ma publication est la suivante:
-
-\begin{center}
-    \textbf{\fullcite{Vaidis2023}}
-\end{center}
 
 L'article décrit dans un premier temps l'état de l'art à propos des différentes méthodes de calibration extrinsèque existantes en géomatique et arpentage.
 La première méthode est appelée calibration en deux-points.
@@ -98,7 +94,7 @@ La position des prismes sur la plateforme robotique a également un effet sur le
 Cet article met à notre disposition tous les moyens de recueillir des données précises permettant de reconstruire les vérités terrains précises qui seront utiles pour l'évaluation des algorithmes de cartographie 3D.
 Le code ainsi que le jeu de données utilisés sont disponibles en ligne \footnote{\url{https://github.com/norlab-ulaval/RTS_Extrinsic_Calibration}}.
 
-\subsection{Autres papiers}
+\subsection{Articles published and submitted as co-author}
 
 \textbf{\fullcite{Vlad2022}}: 
 Ce papier présente un moyen d'améliorer la précision de la localisation par lidar grâce à la prise en compte du vecteur de gravité donné par une centrale inertielle. 
