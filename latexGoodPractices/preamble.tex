@@ -20,17 +20,29 @@
 % \citet{key}, \citep{key} % in the document
 % \printbibliography % to generate the reference section
 \usepackage[
-backend=bibtex8, 
-style=ieee, 
-sorting=none, 
-natbib=true, 
-doi=false, 
-isbn=false, 
-url=false, 
-eprint=false, 
-maxcitenames=25, 
+backend=bibtex8,
+style=ieee,
+sorting=none,
+natbib=true,
+doi=false,
+isbn=false,
+url=false,
+eprint=false,
+maxcitenames=1,
 mincitenames=1
 ]{biblatex}
+
+\makeatletter
+\newcommand{\tempmaxup}[1]{\def\blx@maxcitenames{99}#1}
+\makeatother
+
+\DeclareCiteCommand{\fullcite}[\tempmaxup]
+{\usebibmacro{prenote}}
+{\usedriver
+	{}
+	{\thefield{entrytype}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
 
 %==============================
 % TEXT

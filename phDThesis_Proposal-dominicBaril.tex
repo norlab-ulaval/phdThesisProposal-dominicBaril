@@ -20,8 +20,6 @@
 % Change to your specific bibliography file
 %\addbibresource{./latexGoodPractices/exampleReferences.bib}
 \addbibresource{./references.bib}
-\DeclareBibliographyCategory{nobibliography}
-\addtocategory{nobibliography}{Vaidis2021}
 %==============================================================
 
 % ---------------------------------------------------------------
@@ -54,8 +52,6 @@
 
 \usepackage{longtable}
 
-\acrodef{UGV}{uncrewed ground vehicle}
-
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{20pt}%
             {-2.5ex\@plus -1ex \@minus -.25ex}%
@@ -66,11 +62,15 @@
 \setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC
 
 % Acronyms
-\acrodef{GNSS}{Géolocalisation et Navigation par Système de Satellites}
+\acrodef{GNSS}{Global Navigation Satellite System}
 \acrodef{ICP}{iterative closest point}
 \acrodef{ROC}{radius of curvature}
+\acrodef{UGV}{uncrewed ground vehicle}
 \acrodef{SSMR}{skid-steering mobile robot}
-\sisetup{locale = FR}
+\acrodef{DRIVE}{Data-driven Robot Input Vector Exploration}
+\acrodef{GP}{Gaussian process}
+\acrodef{BLR}{Bayesian linear regression}
+\acrodef{WILN}[WILN]{Weather-Invariant Lidar-based Navigation}
 
 \def\tableautorefname{table}
 \def\figureautorefname{figure}
@@ -114,10 +114,10 @@
 \newpage
 
 % ---------------------------------------------------------------
-\begin{landscape}
-\input{src/Annexe}
-\end{landscape}
-\newpage
+%\begin{landscape}
+%\input{src/Annexe}
+%\end{landscape}
+%\newpage
 
 \end{document}
 

@@ -19,16 +19,17 @@ Since mobile robotics is a field requiring various expertise and human ressource
 \begin{center}
 	\textbf{\fullcite{Baril2020}}
 \end{center}
-The first article that I have published was submitted to the ``Conference on Robot and Vision (CRV)'', in May 2020.
+The first article that I have published was submitted to the \emph{Conference on Robot and Vision (CRV)}, in May 2020.
 This article aims to evaluate the performance of~\acp{SSMR} kinematic motion models on dry concrete and snow-covered terrain.
 For this article
 In this article, we collected a total of~\SI{2}{\kilo\meter} of human driving data to evaluate four kinematic models from the literature.
 We leverage lidar point cloud registration based on the~\ac{ICP} algorithm to generate ground truth localization.
+This work received the \textbf{Best Robot Paper Award} for the CRV conference this year.
 The resulting contributions are as follows:
 \begin{enumerate}
-	\item validate their fitness for a heavier platform on a relatively uniform concrete terrain;
-	\item evaluate their performance for snow-covered terrain using more than \SI{2}{\kilo\meter} of trajectories traveled; and
-	\item highlight the impact of angular motion on the accuracy of \acp{SSMR} kinematic modeling.
+	\item Validate~\ac{SSMR} kinematic motion models fitness for a heavier platform on a relatively uniform concrete terrain;
+	\item Evaluate~\ac{SSMR} kinematic motion models their performance for snow-covered terrain using more than \SI{2}{\kilo\meter} of trajectories traveled; and
+	\item Highlight the impact of angular motion on the accuracy of \acp{SSMR} kinematic modeling.
 \end{enumerate}
 
 The four kinematic models evaluated are the extended differential-drive asymmetrical, the extended differential-drive symmetrical~\citep{Mandow2007}, the full linear~\citep{Anousaki2004} and~\ac{ROC}-based~\citep{Wang2015}.
@@ -49,93 +50,85 @@ Since deploying~\acp{UGV} in off-road environments is a complex endeavor, reduci
 	\textbf{\fullcite{Baril2023}}
 \end{center}
 
-Le second article sur lequel j'ai travaillé a été soumis à la conférence appelée ``International Conference on Robotics and Automation (ICRA)'', en septembre 2023.
-Cet article se concentre sur les différentes méthodes de calibration extrinsèque employées pour exprimer les données provenant de plusieurs stations totales robotiques dans un référentiel commun, et répond donc à la deuxième problématique de mes travaux de recherches.
-Dans cet article, nous proposons une nouvelle méthode dynamique qui se base sur les trois prismes suivis par nos trois stations totales robotiques.
-Une comparaison est effectuée entre toutes les méthodes étudiées: la nôtre augmente la précision de \SI{25}{\%} par rapport à la meilleure des méthodes utilisées dans l'état de l'art.
-Pour cet article, j'ai rédigé une bonne partie du texte, développé une partie du code pour le traitement des données, fait les expériences sur le terrain, et interprété les résultats obtenus.
-La citation complète de ma publication est la suivante:
+My second article as first author was submitted to the \emph{International Conference on Robotics and Automation (ICRA) 2024}.
+It is currently under review, with a result expected in January 2024.
+This article aims to solve the issue discovered in our previous work by standardizing and automating the~\ac{UGV} training dataset gathering task.
+Thus, we propose~\ac{DRIVE}, a protocol allowing to automatically generate a training dataset for commercial~\acp{UGV}.
+We also propose a novel~\ac{SSMR} dynamics-based slip learning model, outperforming similar models.
+The experimental evaluation for this work totals over~\SI{7}{\kilo\meter} of driving data, conducted through three~\acp{SSMR} with weights ranging from~\SI{75}{\kilo\gram} to~\SI{470}{\kilo\gram}.
+The deployment environments include indoor tile, snow-covered terrain, dry gravel and an indoor, leveled ice rink.
+Again, localization is provided by our local mapping framework, based on the~\ac{ICP} algorithm.
+The code and datasets are all available online and open-source.\footnote{\url{https://github.com/norlab-ulaval/DRIVE}}
+For this work, the contributions are as follows:
+\begin{enumerate}
+	\item \ac{DRIVE}, a standardized~\ac{UGV} characterization and motion data generation protocol allowing to train motion models on the entire vehicle input space;
+	\item A novel slip-based \ac{UGV} motion prediction model, leveraging the accuracy of model-based approaches and the minimal system characterization requirement of learning-based approaches.
+\end{enumerate}
+As shown in our previously published work~\citep{Baril2020}, a training dataset specific to vehicle and terrain properties is key to reduce motion prediction error.
+Most work on~\ac{UGV} motion modeling includes training dataset gathering, however, there exists little-to-no guidelines available to reproduce their work.
+\ac{DRIVE} enables automatic~\ac{UGV} input-space characterization and training dataset gathering by sampling uniformly through the input-space.
+We show that this protocol leads to significantly increased prediction performance when compared to manual driving and~\acf{ROC} stimulation approaches.
+Another key finding is that for all experiments conducted, models reach convergence with a maximum of~\SI{46}{\sec} of driving data.
+This result is of high importance for field robotics operations, which are costly to deploy and for which~\ac{UGV} battery conservation is critical~\citep{Baril2022}.
+It also enables model re-training when driving conditions change drastically.
 
-L'article décrit dans un premier temps l'état de l'art à propos des différentes méthodes de calibration extrinsèque existantes en géomatique et arpentage.
-La première méthode est appelée calibration en deux-points.
-Elle a uniquement besoin de deux points statiques dont on connaît très précisément la position relative, au moins au millimètre près.
-Les positions sont mesurées par chacune des stations totales et la méthode nous donne les transformations rigides ente les référentiels respectifs.
-La seconde méthode, qui est la plus utilisée pour faire une calibration extrinsèque, est celle des points statiques de calibration.
-Cette méthode consiste à prendre les positions statiques de nombreux points de contrôles, à recaler leurs positions, ce qui nous donne les transformations rigides entre les référentiels respectifs des stations totales.
-La troisième méthode est identique à celle précédemment citée, mais la position des points de contrôle est prise de manière dynamique avec un prisme en mouvement. 
-Toutes ces méthodes, en plus de la nouvelle que nous proposons, sont décrites mathématiquement dans la section théorie du papier.
-L'état de l'art du papier donne également les principales sources de bruits à prendre en compte lors d'expérimentations avec plusieurs stations totales robotiques.
+Furthermore, we propose a novel slip learning model outperforming similar learning models for~\acp{SSMR} navigation in off-road terrain.
+Contrarily to our previous work~\citep{Baril2020}, we rely on additive slip, which facilitates slip learning since slip is computed by subtracting the commanded body velocity to the observed body velocity, similarly as proposed by~\citet{Seegmiller2014}.
+For slip learning, we rely on~\ac{BLR}, which enable fast prediction and training, which is ideal for realtime~\ac{UGV} deployment~\citep{Mckinnon2019}.
+We show that by leveraging dynamics-aware basis functions for~\ac{BLR}, we have significant slip prediction performance improvement over the baseline~\ac{BLR} learning approach, which learns vehicle acceleration.
+The operational limit for our model is reached on the ice rink experiments, where extreme~\ac{UGV} severely impacts~\ac{UGV} motion.
 
-La nouvelle méthode de calibration extrinsèque que nous proposons se base sur les distances inter-prismes positionnées sur la plateforme robotique.
-Les distances pouvant être déterminées au millimètre près avec une station totale, nous pouvons minimiser la distance de ces distances inter-prismes avec une fonction de coût optimisée dans l'algèbre de Lie par une méthode des moindres carrés. 
-Le résultat de cette minimisation nous donne directement les transformations rigides entre les référentiels des différentes stations totales robotiques.
-Pour pouvoir appliquer cette minimisation, nous pré-traitons les données brutes provenant des stations totales avec un pipeline dédié filtrant les données dans un premier temps. 
-Puis, dans un deuxième temps, celles-ci sont interpolées permettant les mesures des stations totales à un même instant.
-Ceci n'est pas le cas habituellement puisque les données sont prises de manière asynchrone.
+The biggest lesson learned is that~\ac{DRIVE} enables training dataset gathering for model convergence in~\SI{46}{\sec}, for our slip-\ac{BLR} model, which outperforms similar learning approaches.
+This protocol is interesting for field operations as it enables users to generate an accurate motion prediction model for any new~\ac{UGV} or environment configuration, effectively saving a lot of deployment resources and battery usage.
+As future work, we want to investigate dynamic modeling on the ice rink experiment to see if richer modeling approaches can improve prediction accuracy under dynamically complex driving conditions.
+This experimental dataset is also ideal to investigate the limit of adaptive modeling approaches by simulating a robot instantly changing terrain type.
 
-Afin de comparer les différentes méthodes, un jeu de données totalisant plus de \SI{30}{km} de trajectoire de la plateforme robotique a pu être enregistré lors de 40 expériences différentes: elles ont été réalisées entre fin février 2022 et septembre 2022 lors de 15 déploiements.
-Ces déploiements se déroulèrent dans deux types d'environnement: à l'extérieur, tout d'abord sur le \underline{campus de l'Université Laval} où se situent des bases de calibrations statiques permettant de réaliser la calibration en deux-points, puis dans les \underline{tunnels de l'Université Laval}, longs et droits sur plusieurs centaines de mètres à certains endroits.
-Le choix s'est porté sur ces lieux du fait de leurs différentes configurations spatiales et des expériences de cartographie 3D avec lidars qu'y mène le Norlab.
-Comme suite à chaque déploiement, une station totale a mesuré la position des prismes et de certains capteurs avec précision afin que notre nouvelle méthode de calibration extrinsèque puisse être appliquée.
+\begin{center}
+	\textbf{\fullcite{Baril2022}}
+\end{center}
 
-Grâce à ce jeu de données, des tests de sensibilités et d'ablations ont pu être effectués sur les différents paramètres et modules du pipeline de pré-traitement.
-Il a été démontré que le pipeline augmente la précision des résultats de \SI{18}{\%} grâce au filtrage des données erronées.
-De plus, une simple interpolation linéaire des données est suffisante en comparaison d'une utilisation de ``Gaussian Process'' pour laquelle une meilleure précision était attendue.
-La comparaison entre les différentes méthodes de calibration extrinsèque nous démontre que la nôtre est la plus précise.
-Son exactitude est cependant plus faible de quelques millimètres en comparaison de la méthode des points de contrôles statiques.
-Globalement, toutes les méthodes sont plus précises que l'utilisation de \ac{GNSS}.
+The third article that concludes the list of articles submitted as first author was submitted and published in the~\emph{Field Robotics} journal.
+In this paper, we leverage the models evaluated in our previous work with our lidar-based localization and mapping system to create the~\ac{WILN} autonomous navigation system and conduct~\SI{18.8}{\kilo\meter} of autonomous driving.
+For this work, we were awarded the~\textbf{Relève Etoile Louis-Berlinguet Award} from FRQNT.
+We leverage the data acquired to produce a field report documenting the impact of the boreal forest biome and winter weather on lidar-based autonomous navigation.
+The dataset gathered in the field is available online and open-source.\footnote{\hsize=0.87\textwidth\url{https://github.com/norlab-ulaval/Norlab_wiki/wiki/Kilometer-scale-autonomous-navigation-in-subarctic-forests:-challenges-and-lessons-learned}}
+The specific contributions for this article are as follows:
+\begin{enumerate}
+	\item A comprehensive study of the impact of the boreal forest biome on lidar- and \ac{GNSS}-based localization and autonomous navigation;  
+	\item An overview of the impact of snow accumulation on the reliability of lidar-based localization over multiple days; and
+	\item A description of the \ac{WILN} system, designed to enable wintertime autonomous navigation in a boreal forest.
+\end{enumerate}
+While we have validated lidar-based localization and mapping is suitable for autonomous navigation the test environment, we observed particular phenomenons that can lead to navigation failure, most of which are related to lidar localization.
+First, when navigating in a corridor-like forest trail, under dense vegetation, the low longitudinal geometric constraints lead to localization instability, which caused the~\ac{UGV} to crash with vegetation in some occasions.
+Secondly, the snow accumulation causes the environment to change significantly, which was critical in areas where to man-made structures are present to support lidar-based localization.
+For those issues, we have documented the impact on our localization system and highlighted the challenges to be solved to enable true year-long autonomy in boreal forests.
+An analysis of the quality of~\ac{GNSS} signal under the dense vegetation of boreal forests was also conducted, showing that it is unsuitable for navigation in tight forest trails, but functional on larger forest paths.
 
-Dans cet article, nous avons proposé une nouvelle méthode de calibration extrinsèque qui ne se base pas sur la mesure de points statiques, ce qui permet d'augmenter le temps consacré aux expériences lors de déploiements.
-Cette nouvelle méthode s'accompagne d'un pipeline de pré-traitement des données venant des stations totales robotiques. 
-L'utilisation du pipeline augmente de \SI{18}{\%} la précision des résultats, et ceux-ci sont plus précis de \SI{25}{\%} car combinés à notre nouvelle méthode de calibration extrinsèque.
-Notre nouvelle méthode de calibration est limitée dans certains types d'environnements comme les tunnels, où les trajectoires sont longues et droites, ce qui empêche notre minimisation de converger vers le résultat attendu.
-Des simulations plus poussées seront effectuées afin de mieux caractériser ces limites d'utilisation.
-La position des prismes sur la plateforme robotique a également un effet sur le résultat, qui doit être davantage quantifié avec précision. 
-Cet article met à notre disposition tous les moyens de recueillir des données précises permettant de reconstruire les vérités terrains précises qui seront utiles pour l'évaluation des algorithmes de cartographie 3D.
-Le code ainsi que le jeu de données utilisés sont disponibles en ligne \footnote{\url{https://github.com/norlab-ulaval/RTS_Extrinsic_Calibration}}.
+Since it was not the main focus for this work, an operator drove periodically with a snowmobile over the paths navigated by the~\ac{UGV} to tap the snow and enable large-scale navigation.
+We still investigated the impact of the environment on our selected kinematic path following controller~\citep{Huskic2017}.
+Under these conditions, we show that the path following error is strongly correlated with reference path curvature, meaning that the most likely cause for path following failure is tight turning in forest trails.
+Qualitatively, we also show that deep snow navigation is complex for~\acp{SSMR} since it significantly reduces the vehicle's ability to turn.
+
+For this work, the main take home message is that kinematic motion modeling and lidar-based localization are suitable for wintertime navigation in boreal forests, but that challenges remain to be solved for true year-long autonomy.
+First, localization robustness to areas with corridor-like environments and dynamic environments should be addressed, by adapting the reference map and adding localization constraints.
+Secondly, kinematic path following controllers are suitable for condensed or shallow snow, but fail in deep snow.
+Thirdly, energy consumption estimation and prediction is complex in cold weather, however it is key to maximize~\ac{UGV} usage and prevent breakdown in remote areas.
+While those are the main challenges observed, multiple more lessons learned are highlighted in this work.
 
 \subsection{Articles published and submitted as co-author}
 
-\textbf{\fullcite{Vlad2022}}: 
-Ce papier présente un moyen d'améliorer la précision de la localisation par lidar grâce à la prise en compte du vecteur de gravité donné par une centrale inertielle. 
-Pour ce papier, j'ai effectué les comparaisons de trajectoire entre celles données par notre algorithme de cartographie amélioré et celles des vérités terrains prises par des \ac{GNSS}. 
-J'ai également apporté mon aide à la prise de jeux de données sur le terrain et à la rédaction.
+\textbf{\fullcite{Deschenes2021}}: 
+\lightlipsum[1-1]
 \\
 
-\textbf{\fullcite{Baril2022}}:
-Cet article de journal présente un pipeline de ``teach-and-repeat'' qui a été testé en forêt Montmorency. 
-Avec ce pipeline, la plateforme robotique a pu effectuer près de \SI{20}{km} de trajectoire en toute autonomie, dans des conditions boréales. 
-Pour ce faire, j'ai enregistré sur le terrain des données de vérités terrains à l'aide de mon système de stations totales et de \ac{GNSS}, puis j'ai traité les données recueillies. 
-J'ai également participé à la rédaction de l'article.
+\textbf{\fullcite{Roucek2022}}:
+\lightlipsum[1-1] 
 \\
 
-\textbf{\fullcite{Roucek2021}}:
-En février 2020, j'ai participé à la compétition du DARPA (``Defense Advanced Research Projects Agency'') Urban Challenge. 
-Ce papier présente le système utilisé lors de la compétition, ainsi que les résultats obtenus. 
-J'ai participé à la compétition, traité les données en lien avec la cartographie 3D et effectué l'évaluation de la précision de notre algorithme pour la localisation des plateformes utilisées.
+\textbf{\fullcite{Courcelle2022}}:
+\lightlipsum[1-1]
 \\
 
-\textbf{\fullcite{Chahine2021}}: 
-Ce papier présente un algorithme de cartographie 3D se basant sur différents capteurs visant ainsi à améliorer la précision du résultat (lidar, caméra et \ac{GNSS} ensemble).
-
-C'est dans ce papier que j'ai présenté pour la première fois le début de mes recherches avec mon système de stations totales. 
-Mais seule une station totale a pu alors être utilisée du fait du manque d'espace pour les cibles sur le sac à dos avec les capteurs.
-J'ai aidé à la prise de données sur le terrain, ainsi qu'à leur traitement pour l'obtention de la vérité terrain, et j'ai également participé à la rédaction de l'article.
+\textbf{\fullcite{Deschenes2023}}:
+\lightlipsum[1-1]
 \\
-
-\textbf{\fullcite{Baril2020}}:
-Cet article présente l'évaluation de modèle cinématique sur différents types de terrains: asphalte ou neige. 
-Le but de l'article est de présenter les résultats des différents modèles et de discuter de leur efficacité. 
-Pour cet article, j'ai pris des données sur le terrain et j'ai traité celles provenant de notre algorithme de cartographie. 
-J'ai également aidé à la rédaction.
-\\
-
-\textbf{\fullcite{Laconte2021}}:
-Ce papier présente l'état de l'art pour les différentes méthodes de localisation de véhicules sur des autoroutes, principalement par la détection des lignes via des systèmes de caméras et de lidars.
-J'ai aidé à la rédaction de l'article. Aucune donnée n'a été prise sur le terrain.
-\\
-
-\textbf{\fullcite{Vaidis2020}}:
-Cet article est un article de ``workshop'' pour la conférence ICRA 2021, en ce sens non pertinent pour ma thèse.
-Il aborde l'amélioration de notre algorithme de cartographie avec des contraintes de rotation fixées dans l'algèbre de Lie via des données issues d'une centrale inertielle.
-Pour ce papier, j'ai effectué les expériences, traité les données et rédigé la grande partie de l'article.
