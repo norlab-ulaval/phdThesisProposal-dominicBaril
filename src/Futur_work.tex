@@ -1,75 +1,100 @@
-\section{Recherches futures}
-\label{sec:recherches_futures}
+\section{Work left before submitting the thesis}
+\label{sec:future_work}
 
-Dans les \autoref{sec:papiers_soumis} ont été présentés le travail réalisé pour mettre au point le système de stations totales robotiques, ainsi que la collecte de données dans différents types d'environnement avec une précision sub-centimétrique.
-Les deux premières problématiques de mon doctorat concernant la mise au point de ce système de collecte de données ainsi que l'obtention d'une calibration extrinsèque de précision ont été détaillées et résolues.
-La présente section détaille les travaux de recherches que je planifie afin de répondre à ma dernière problématique de recherche, à savoir comment utiliser les données récoltées pour générer des vérités terrains précises dans l'ordre du millimètre, et effectuer des comparaisons de trajectoires avec ces vérités terrains.
-Le calendrier détaillé de mes recherches restantes est présenté dans la \autoref{sec:calendrier}.
+The three articles written as first author presented in~\autoref{sec:submitted} will consist the majority of the thesis by articles.
+Additionally, to maximize the value of the data gathered, especially through the work related to~\ac{DRIVE}, a few additional experiments will be conducted.
+First, an analysis of the performance improvement that can be reached through dynamic modelling for navigation on ice will be conducted.
+Second, an investigation of the limit of current adaptive models will be conducted by artificially mixing datasets on different terrains.
+Thirdly, we will study of the impact of~\ac{DRIVE}~\ac{UGV} characterization on path following performance under a realistic deployment setting.
+These results will be appended to the published and submitted articles in the thesis to complete it.
+A schedule for the remaining work and Gantt chart are presented in~\autoref{sec:schedule}
 
-\subsection{Génération de vérités terrains}
+\subsection{Dynamic modeling on ice}
+We learned through our~\ac{DRIVE} work that slip learning model reach their functional limit under extreme conditions, such as navigation on an ice rink, as shown in~\autoref{fig:warthog-ice}.
+Indeed, the low wheel-to-ground friction leads to high motion inertia, which is not modeled by slip learning.
+While a lot of attention is given to generate and validate dynamic motion model for high-speed driving on concrete~\citep{Djeumou2023} or gravel~\citep{Williams2018}, not much work has focused on investigating their functionality on ice.
+Since we have already completed the work to collect a~\SI{20}{\min} dataset of uniform vehicle input sampling, the time required to investigate the predictive performance of dynamic models on this dataset is much smaller.
+\begin{SCfigure}[\sidecaptionrelwidth][h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/warthog_ice.png}
+	\caption{
+		A photo is the Warthog, our~\SI{470}{\kilo\gram} research~\ac{SSMR}.
+		Via the~\ac{DRIVE} protocol, we have collected a~\SI{20}{\min} dataset of the vehicle exectuting a large spectrum of commands.
+		This dataset shows the limit of our current slip learning model, motivating an investigation of dynamic model performance.
+	}
+	\label{fig:warthog-ice}
+\end{SCfigure}
 
-La dernière partie de mon doctorat se concentrera donc sur la génération des vérités terrains, ce qui est la suite logique de mes travaux de recherches, ainsi que le but ultime de mon système de stations totales robotiques.
-Cette dernière problématique se décompose en trois sous-parties:
+This work could lead to contributions related to dynamic formulation for~\acp{SSMR} navigating on ice, or learning dynamic model parameters through~\ac{BLR} to facilitate deployment of dynamic models.
+The evaluation pipeline for model training and prediction error over an entire dataset is already set up and ready to compare dynamic models to slip learning.\footnote{\url{https://github.com/norlab-ulaval/norlab_WMRD}}
+Improvements could also be made to the~\ac{DRIVE} protocol to sample additional dynamic variables, such as body acceleration.
+\subsection{Adaptive motion modeling}
+Next, I plan to study the performance of adaptive modeling under extreme traction variation.
+To illustrate this challenge, \autoref{fig:snow_var} shows two use cases, namely hard and deep snow navigation, for which traction varies significantly.
+In the case of deep snow navigation, the~\ac{SSMR} almost reached immobilization, which means that switching between both conditions produces the almost the largest change in traction conditions that can be observed for a specific~\ac{UGV}.
+This is an ideal case to investigate the limits of current adaptive modeling approach, which are easy to integrate with our slip learning model.
+\begin{figure}[h!]
+	\begin{center}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\linewidth]{figs/warthog_hard_snow.pdf}
+			\caption{}
+			\label{fig:hard_snow}
+		\end{subfigure}%
+		~
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\linewidth]{figs/snow_depth.pdf}
+			\caption{}
+			\label{fig:deep_snow}
+		\end{subfigure}%
+		\caption{
+		Example of distinct terrain navigating encountered during wintertime off-road navigation with the Warthog platform.
+		\textbf{(a)}: Hard snow navigation, with limited slip, representing nominal navigation.
+		\textbf{(b)}: Deep snow navigation, with high slip, representing an edge case for~\ac{SSMR} motion modeling.
+		}
+		\label{fig:snow_var}
+	\end{center}
+\end{figure}
 
-\begin{enumerate}\bfseries
-    \item La génération des vérités terrains,
-    \item La gestion de l'incertitude,
-    \item L'évaluation de trajectoires avec ces vérités terrains.
-\end{enumerate}
+As proposed by~\citet{Mckinnon2019}, weighted~\ac{BLR} learning enables re-training of the model based on new traction conditions and a prior motion model.
+In their work, they show that weighted~\ac{BLR} performs well to adapt to slight changes in traction condition, both artificially generated and through slope variation.
+However, no study investigates the performance of adaptive modeling with respect to the degree of traction variability and what is the operational limit.
+By leveraging the~\ac{DRIVE} protocol to gather two distinct datasets, namely on hard and deep snow, we could simulate such changes in traction and analyse the performance of weighted~\ac{BLR} learning.
+In the case of failure, it will be an opportunity to develop improvements to this adaptive modeling approach, increasing its robustness to significant variation in traction.
 
-La génération de vérités terrains, à savoir la pose de la plateforme robotique en six degrés de liberté, a déjà été succinctement évoquée dans le papier CRV 2021: sa faisabilité a été démontrée.
-Celle-ci a été effectuée après l'interpolation des trajectoires de prismes par une minimisation point-à-point entre les positions théoriques des prismes les uns par rapport aux autres, et leurs positions mesurées sur le terrain.
-Dans le papier d'ICRA 2023, nous avons relaté que l'utilisation de modules de filtrage permettait d'augmenter la précision de \SI{18}{\%} des résultats finaux.
-Nous souhaitons appliquer le même principe à la génération des vérités terrains pour en augmenter la précision, et utiliser d'autres méthodes d'interpolation ou d'optimisation de trajectoires pour générer ces vérités terrains et évaluer quelles en sont les meilleures, notamment pour quantifier l'incertitude.
+\subsection{\ac{DRIVE} impact on path following}
+Lastly, we have developed a predictive control library in the context of industrial demonstrations for this project.\footnote{\url{https://github.com/norlab-ulaval/norlab_controllers}}
+Such controllers are based on the~\ac{MPC} algorithm, enabling high speed path following with low tracking error.
+In our case, we have implemented a simplified version of the slip-aware~\ac{MPC} controlled proposed by~\citet{Hewing2020}.
+Since the motion model acts as a interchangeable module for such controllers, the prediction accuracy improvements reached through our work on the~\ac{DRIVE} protocol will most likely improve~\ac{MPC} path following performance.
+A last interesting result would be to quantify the path following error improvement reached through training the slip learning model with a~\ac{DRIVE}-gathered training dataset instead of manual driving.
+Typically, human driving data is limited in driving velocity since it is the first time for which the vehicle navigated the target trajectory.
+Our hypothesis is that by training the model through~\ac{DRIVE}, path following performance at high speed is improved as soon as the first time the~\ac{UGV} executes the desired trajectory.
 
-L'incertitude est rarement quantifiée lors de la génération de vérités terrains.
-Elle l'est encore moins pour l'évaluation de trajectoires par rapport à celles-ci.
-Avec notre système de trois stations totales et des trois prismes, nous avons la possibilité de pouvoir estimer l'incertitude grâce à la métrique de la distance inter-prisme.
-C'est pourquoi l'objectif de mes prochaines recherches portera sur la manière de quantifier cette incertitude à l'aide des expériences effectuées.
-Mon souhait est également d'exploiter cette incertitude pour ce qui concerne la comparaison de trajectoires.
+\subsection{Schedule for upcoming work}
+\label{sec:schedule}
 
-L'évaluation de trajectoires avec des vérités terrains se fait depuis de nombreuses années.
-La très grande majorité des évaluations utilise la norme euclidienne pour établir les comparaisons.
-Cette norme est facile à mettre en application, mais elle ne prend pas en compte l'incertitude, ce qui peut fausser le résultat et donc rendre inutilisable la vérité terrain.
-Ces situations peuvent se produire lorsqu'un \ac{GNSS} est utilisé pour générer une vérité terrain, alors que son signal n'est pas bon.
-Une incertitude de plusieurs mètres peut alors apparaître comme ce fut le cas pour le jeu de données du Kitty Dataset \footnote{\url{https://www.cvlibs.net/datasets/kitti/eval_odometry.php}}, lequel compare des trajectoires données par des algorithmes de cartographie à sa vérité terrain issue d'un \ac{GNSS}.
-En dessous de \SI{100}{m} d'évaluation par une métrique d'erreur de pose relative, les résultats peuvent être biaisés.
-Les auteurs du jeu de données ont donc mis la distance d'évaluation pour une métrique d'erreur de pose relative à \SI{100}{m} au minimum pour éviter ces cas.
-Dans mes recherches, je souhaite améliorer la prise en compte de l'incertitude concernant l'évaluation de trajectoires.
-Cela permettra un résultat plus représentatif pour effectuer des comparaisons d'algorithmes entre eux.
+Le calendrier détaillé de la planification des objectifs pour la rédaction du prochain article de journal est située dans la \autoref{sec:Annexe} en annexe.
+Ce calendrier s'étend de novembre 2022 à mars 2023.
+Les différentes étapes de mes recherches y sont présentées: expériences à faire sur le terrain, génération des vérités terrains, prise en compte de l'incertitude pour ces générations, évaluation de trajectoires, et enfin rédaction de l'article de journal.
 
-Ces trois sous-parties de ma problématique finale seront développées dans un article de journal que je soumettrai fin mars 2023.
-Le journal visé sera celui de ``Field Robotics'' \footnote{\url{https://www.journalfieldrobotics.org/Field_Robotics/Home.html}}.
-Cet article de journal se concentrera sur la manière dont on générera les vérités terrains avec notre système de stations totales robotiques.
-Il sera une suite logique des deux premiers articles, et présentera des jeux de données provenant de déploiements effectués durant une année entière (février 2022 à décembre 2022) afin de pouvoir montrer la plus-value de notre système dans différents types d'environnements et dans différentes conditions météorologiques.
-Le détail des expériences à faire est présenté dans la prochaine sous-section.
+Mon article de journal rédigé, je me concentrerai sur la rédaction de ma thèse.
+La \autoref{fig:gantt} montre le calendrier de la planification des objectifs pour le dépôt final de la thèse.
+Je souhaite réaliser une thèse par articles.
+Elle en comportera trois que j'ai publiés ou soumis: CRV 2021, ICRA 2023 et Field Robotics 2023.
+S'il est accepté, l'article d'ICRA 2023 sera présenté à la conférence à la fin du mois de mai 2023.
+Pour ce qui est de l'article du journal Field Robotics, il sera probablement publié d'ici un an ou deux, soit en 2024 ou 2025, après les différentes rondes de révisions.
 
-\subsection{Expériences prévues}
+Je prévois deux mois de rédaction de thèse juste après la soumission de mon article de journal, soit en avril et mai 2023. 
+Je ferai mon dépôt initial au mois de mai 2023.
+Après une période de 6 à 8 semaines, je pourrai effectuer ma défense durant le mois de juillet 2023.
+Si ma thèse est acceptée, il m'appartiendra de faire les corrections données par mon comité pour un dépôt final escompté au mois d'août 2023.
 
-Afin de préparer mes recherches futures, plus d'une dizaine de déploiements sont prévus en ces mois de novembre et décembre 2022.
-Je collecterai les données manquantes à la présentation de mon travail dans l'article de journal.
-Ces déploiements sont répartis en plusieurs étapes correspondant à différentes parties de ma recherche, à savoir l'évaluation de la précision du système de stations totales robotiques dans différentes conditions, la comparaison de celle-ci avec les \ac{GNSS} sur un plus grand nombre de données, et la récolte de plus de données en forêt de Montmorency.
-
-Quelques évaluations ont déjà été réalisées et répertoriées dans l'article de CRV 2021 sur notre système afin de caractériser la précision de ce dernier.
-Cependant, le jeu de données alors utilisé comprenait moins de \SI{500}{m} de trajectoires de la plateforme robotique et la méthode de calibration extrinsèque utilisée n'était pas aussi précise que celle développée dans l'article d'ICRA 2023.
-Quelques expériences pour mieux comprendre notre système font défaut au jeu de données utilisé dans l'article d'ICRA 2023: à savoir la distance limite de la prise de données due à la distance maximale permise par les stations totales ainsi que la distance maximale des modules LoRa de communication.
-Des expériences seront donc menées afin de quantifier ces limites, mais également afin de quantifier la précision en fonction de la distance de la prise de mesure. 
-De plus, dans les articles de CRV 2021 et d'ICRA 2023 a été soulevée la question de l'influence de la position des prismes sur la plateforme robotique.
-Des simulations et des expériences seront menées afin de pouvoir répondre à cette question.
-
-Dans l'article de CRV 2021, a été effectuée une comparaison avec des données \ac{GNSS} en milieux ouverts ainsi qu'en forêt.
-Pour faire suite aux récentes améliorations apportées à notre système, une collecte de données plus conséquente sera réalisée dans le but d'augmenter le nombre de données exploitables en plus de celles utilisées pour le papier d'ICRA 2023. 
-Les données \ac{GNSS} ont pour le moment uniquement servi à comparer la précision du système par rapport à la métrique de la distance inter-prisme ou inter-\ac{GNSS}.
-Les données que nous récolterons prochainement serviront cette fois à faire des comparaisons de trajectoires avec les vérités terrains.
-De plus, les trajets effectués prendront en compte différents types de scénarios, tels que l'alternance de milieux ouverts ou couverts, afin de mettre en évidences les problèmes des \ac{GNSS} comparés à notre système de stations totales.
-
-Enfin, il est prévu de faire des déploiements en forêt de Montmorency dans le but de recueillir des données avec météo variable: par temps de brouillard et de chutes de neige afin de quantifier la précision de notre système pendant ces épisodes climatiques.
-De ce fait, au moins deux déploiements sont prévus à un mois d'écart: le premier au début du mois de novembre 2022 (sans neige), puis le second au début du mois de décembre (avec neige).
-Les deux plateformes robotiques seront utilisées afin de maximiser la prise de données durant ces déploiements.
-Ces expériences visant à comparer les jeux de données seront cependant toujours réalisées au même endroit, quelle que soit la météo.
-
-Il est à noter que pour chacun des déploiements effectués, les données provenant de capteurs lidars seront également récoltées afin de pouvoir comparer la trajectoire donnée par notre algorithme de cartographie 3D à celle issue de notre système de stations totales robotiques ou de \ac{GNSS}.
-Ainsi, grâce à chaque expérience menée, nous pourrons étudier un résultat spécifique et le présenter dans l'article de journal.
-Le jeu de données de l'article d'ICRA 2023 sera également exploité pour certains résultats et certaines comparaisons, comme cela avait été prévu initialement.
-Au total, nous souhaitons avoir plus de \SI{50}{km} de trajectoires de plateforme robotiques afin d'éliminer certaines valeurs aberrantes lors de la génération des résultats, et pouvoir ainsi accéder à un jeu de données complet prenant en compte différents types d'événements.
-Cela nous est nécessaire si nous souhaitons trouver les limites de notre système, comme ce fus le cas par exemple dans l'article d'ICRA 2023.
+\setlength{\fboxsep}{9pt}
+\begin{figure}[htbp]
+	\centering
+	\input{gantt_admin}
+	\caption{Diagramme de Gantt contenant les objectifs devant être accompli d'ici au dépôt final de la thèse.
+	}
+	\label{fig:gantt}
+\end{figure}
+\setlength{\fboxsep}{12pt}

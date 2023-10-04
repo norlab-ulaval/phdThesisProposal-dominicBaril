@@ -25,6 +25,7 @@ For this article
 In this article, we collected a total of~\SI{2}{\kilo\meter} of human driving data to evaluate four kinematic models from the literature.
 We leverage lidar point cloud registration based on the~\ac{ICP} algorithm to generate ground truth localization.
 This work received the \textbf{Best Robot Paper Award} for the CRV conference this year.
+A seminar was conducted for this work.\footnote{\url{https://www.youtube.com/watch?v=FjrgZMmWTNI&t=25s}}
 The resulting contributions are as follows:
 \begin{enumerate}
 	\item Validate~\ac{SSMR} kinematic motion models fitness for a heavier platform on a relatively uniform concrete terrain;
@@ -92,6 +93,7 @@ In this paper, we leverage the models evaluated in our previous work with our li
 For this work, we were awarded the~\textbf{Relève Etoile Louis-Berlinguet Award} from FRQNT.
 We leverage the data acquired to produce a field report documenting the impact of the boreal forest biome and winter weather on lidar-based autonomous navigation.
 The dataset gathered in the field is available online and open-source.\footnote{\hsize=0.87\textwidth\url{https://github.com/norlab-ulaval/Norlab_wiki/wiki/Kilometer-scale-autonomous-navigation-in-subarctic-forests:-challenges-and-lessons-learned}}
+A seminar was conducted for this work.\footnote{\url{https://www.youtube.com/watch?v=VWzKZvtnInA}}
 The specific contributions for this article are as follows:
 \begin{enumerate}
 	\item A comprehensive study of the impact of the boreal forest biome on lidar- and \ac{GNSS}-based localization and autonomous navigation;  
@@ -118,17 +120,36 @@ While those are the main challenges observed, multiple more lessons learned are 
 \subsection{Articles published and submitted as co-author}
 
 \textbf{\fullcite{Deschenes2021}}: 
-\lightlipsum[1-1]
+This article improves point cloud registration accuracy under aggressive motion by accounting for the error related to point cloud deskewing.
+Deskewing is lidar scan error originating from the assumption that the sensor is static during the sweep.
+Under aggressive motion, characterized by high body velocities and acceleration, this assumption is broken, leading to a high scan error.
+For this work, I built the experimental rig and supported for the experimental work.
+I have also participated in generating the results and for redaction.
 \\
 
 \textbf{\fullcite{Roucek2022}}:
-\lightlipsum[1-1] 
+This article describes the system that was built for the CTU-CRAS-Norlab team at the DARPA Subterranean Challenge Urban Circuit.
+This is the biggest robotics competition in the world and our team managed to class third overall and first among self-funded teams.
+The goal was to deploy a heterogeneous robot fleet in an unknown underground environment and to detect and localize artifacts within~\SI{5}{\centi\meter} of their true position.
+For this work, I co-built the~\ac{UGV} that was contributed by Norlab to the competition and participated in its integration to the complete fleet.
+I have also post-processed the navigation data after the competition and generated the 3D maps that were used as figures in the article.
 \\
 
 \textbf{\fullcite{Courcelle2022}}:
-\lightlipsum[1-1]
+This article is a study of the impact of extreme precipitation on lidar-based localization, more precisely point cloud registration with the~\ac{ICP} algorithm.
+A novel lidar scan obstruction metric is proposed, enabling proper comparison and analysis of the impact of harsh weather.
+We rely on data collected with our own robot platforms and the~\ac{CADC} Dataset to study the relation between this metric and lidar-based localization error, with~\ac{GNSS} as ground truth.
+The results suggest that extreme precipitation has a significant impact on the~\ac{UGV}'s ability to localize, however not enough data is available under such conditions.
+Gathering more data under extreme precipitation remains an open problem.
+In this work, I participated as an advisor on data analysis and experiments.
+I have also helped with writing the paper.
 \\
 
 \textbf{\fullcite{Deschenes2023}}:
-\lightlipsum[1-1]
+This article extends on the previous work on point cloud registration under aggressive motion~\citep{Deschenes2021}.
+This time, the use case is the sensor rig rolling down a steep hill, leading to gyroscope measurement saturation.
+Since such measurements are key to provide a prior for the~\ac{ICP} algorithm to converge, gyroscope saturation leads to localization failure.
+We leverage~\ac{GF}-\ac{INS} theory~\citep{Pachter2013} to estimate body angular velocity under gyroscope saturation and show that lidar localization and mapping then becomes robust to aggressive motions.
+For this work, I was responsible to design the sensor rig and co-responsible for the experimental work.
+I was responsible to finalize most of the figures and participated in writing the text.
 \\
