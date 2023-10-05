@@ -4,7 +4,7 @@
 \begin{ganttchart}[
      %Specs 0.43 0.43 1
      y unit title=0.43cm,
-     y unit chart=0.37cm,
+     y unit chart=0.55cm,
      x unit=1.1cm,  %1.2cm
      vgrid={*{1}{draw=none},*{1}{black}},
      title height=1,   %1
@@ -26,57 +26,65 @@
      milestone/.append style={xscale=0.4, yscale=1},
      milestone label node/.append style={left=10pt},
      milestone label font=\itshape\footnotesize
-     ]{1}{10}
-    \gantttitle[]{2022}{2}
-    \gantttitle[]{2023}{8}
+     ]{1}{8}
+    \gantttitle[]{2024}{8}
     \\              
-    \gantttitle{N}{1} \gantttitle{D}{1} \gantttitle{J}{1} 
-    \gantttitle{F}{1} \gantttitle{M}{1} \gantttitle{A}{1} 
-    \gantttitle{M}{1} \gantttitle{J}{1} \gantttitle{J}{1}
-    \gantttitle{A}{1}
+    \gantttitle{J}{1} \gantttitle{F}{1} \gantttitle{M}{1} 
+    \gantttitle{A}{1} \gantttitle{M}{1} \gantttitle{J}{1} 
+    \gantttitle{J}{1} \gantttitle{A}{1} 
     \\
     %--------------------------------------       
-    \ganttgroup{Thesis writing}{1}{5}\\
+    \ganttgroup{Thesis writing}{1}{3}\\
     
-    \ganttbar{Articles insertion}{1}{2}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{2}\\
+    \ganttbar{Articles insertion}{1}{1}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{1}\\
     
-    \ganttbar{Final results chapter}{3}{5}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{3}{5}\\
+    \ganttbar{Final results chapter}{2}{3}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{2}{3}\\
 	
-	\ganttmilestone{Thesis submitted}{5}\\
+	\ganttmilestone{Thesis submitted}{3}\\
 	
     %--------------------------------------       
     \ganttgroup{Final experiments}{1}{4} \\ 
     
-    \ganttbar{Dynamic modeling}{1}{2}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{2}\\
+    \ganttbar{Dynamic modeling}{1}{1}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{1}\\
     
-    \ganttbar{Adaptive modeling}{3}{4}
+    \ganttbar{Adaptive modeling}{2}{2}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{2}{2}\\
+    
+    \ganttbar{\emph{Opt.} Extra paper}{3}{4}
     \ganttbar[inline, bar label font/.append=\color{white}]{}{3}{4}\\
     
-    %--------------------------------------       
-    \ganttgroup{\emph{ICRA 2024}}{4}{7} \\ 
-    
-    \ganttbar{Paper corrections}{4}{4}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{4}{4}\\
-    
-    \ganttmilestone{Re-submission}{4}\\
-    
-    \ganttbar{Presentation preparation}{7}{7}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{7}{7}\\
-    
-    \ganttmilestone{Article presentation}{7}\\
+    \ganttmilestone{Opt. Extra paper submitted}{4}\\
     
     %--------------------------------------       
-    \ganttgroup{Thesis defense}{6}{10}\\
+    \ganttgroup{\emph{ICRA 2024}}{1}{5} \\ 
     
-    \ganttbar{Thesis review}{6}{8}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{6}{8}\\
+    \ganttbar{Paper corrections}{1}{1}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{1}{1}\\
     
-    \ganttbar{Defense preparation}{8}{10}
-    \ganttbar[inline, bar label font/.append=\color{white}]{}{8}{10}\\
+    \ganttmilestone{Re-submission}{1}\\
     
-    \ganttmilestone{Defense completed}{10}\\
+    \ganttbar{Presentation preparation}{5}{5}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{5}{5}\\
+    
+    \ganttmilestone{Article presentation}{5}\\
+    
+    %--------------------------------------       
+    \ganttgroup{Thesis defense}{4}{8}\\
+    
+    \ganttbar{Thesis review}{4}{6}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{4}{6}\\
+    
+    \ganttbar{Defense preparation}{4}{6}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{4}{6}\\
+    
+    \ganttmilestone{Defense}{6}\\
+    
+    \ganttbar{Final reviews}{7}{8}
+    \ganttbar[inline, bar label font/.append=\color{white}]{}{7}{8}\\
+    
+    \ganttmilestone{Final submission}{8}\\
     
 \end{ganttchart}

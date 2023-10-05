@@ -1,7 +1,7 @@
 \section{Work left before submitting the thesis}
 \label{sec:future_work}
 
-The three articles written as first author presented in~\autoref{sec:submitted} will consist the majority of the thesis by articles.
+The three articles that I have written as first author presented in~\autoref{sec:submitted} will represent the majority of the thesis by articles.
 Additionally, to maximize the value of the data gathered, especially through the work related to~\ac{DRIVE}, a few additional experiments will be conducted.
 First, an analysis of the performance improvement that can be reached through dynamic modelling for navigation on ice will be conducted.
 Second, an investigation of the limit of current adaptive models will be conducted by artificially mixing datasets on different terrains.
@@ -12,7 +12,7 @@ A schedule for the remaining work and Gantt chart are presented in~\autoref{sec:
 \subsection{Dynamic modeling on ice}
 We learned through our~\ac{DRIVE} work that slip learning model reach their functional limit under extreme conditions, such as navigation on an ice rink, as shown in~\autoref{fig:warthog-ice}.
 Indeed, the low wheel-to-ground friction leads to high motion inertia, which is not modeled by slip learning.
-While a lot of attention is given to generate and validate dynamic motion model for high-speed driving on concrete~\citep{Djeumou2023} or gravel~\citep{Williams2018}, not much work has focused on investigating their functionality on ice.
+While a lot of attention is given to generating and validating dynamic motion model for high-speed driving on concrete~\citep{Djeumou2023} or gravel~\citep{Williams2018}, not much work has focused on investigating their functionality on ice.
 Since we have already completed the work to collect a~\SI{20}{\min} dataset of uniform vehicle input sampling, the time required to investigate the predictive performance of dynamic models on this dataset is much smaller.
 \begin{SCfigure}[\sidecaptionrelwidth][h!]
 	\centering
@@ -25,14 +25,14 @@ Since we have already completed the work to collect a~\SI{20}{\min} dataset of u
 	\label{fig:warthog-ice}
 \end{SCfigure}
 
-This work could lead to contributions related to dynamic formulation for~\acp{SSMR} navigating on ice, or learning dynamic model parameters through~\ac{BLR} to facilitate deployment of dynamic models.
+This work could lead to contributions related to the dynamic model formulation for~\acp{SSMR} navigating on ice, or learning dynamic model parameters through~\ac{BLR} to facilitate deployment of dynamic models.
 The evaluation pipeline for model training and prediction error over an entire dataset is already set up and ready to compare dynamic models to slip learning.\footnote{\url{https://github.com/norlab-ulaval/norlab_WMRD}}
 Improvements could also be made to the~\ac{DRIVE} protocol to sample additional dynamic variables, such as body acceleration.
 \subsection{Adaptive motion modeling}
 Next, I plan to study the performance of adaptive modeling under extreme traction variation.
 To illustrate this challenge, \autoref{fig:snow_var} shows two use cases, namely hard and deep snow navigation, for which traction varies significantly.
-In the case of deep snow navigation, the~\ac{SSMR} almost reached immobilization, which means that switching between both conditions produces the almost the largest change in traction conditions that can be observed for a specific~\ac{UGV}.
-This is an ideal case to investigate the limits of current adaptive modeling approach, which are easy to integrate with our slip learning model.
+In the case of deep snow navigation, the~\ac{SSMR} almost reached immobilization, which means that switching between both conditions produces the largest change in traction conditions that can be observed for a specific~\ac{UGV}.
+This is an ideal case to investigate the limits of current adaptive modeling approach, which is easy to integrate with our slip learning model.
 \begin{figure}[h!]
 	\begin{center}
 		\begin{subfigure}[b]{0.49\textwidth}
@@ -56,16 +56,16 @@ This is an ideal case to investigate the limits of current adaptive modeling app
 \end{figure}
 
 As proposed by~\citet{Mckinnon2019}, weighted~\ac{BLR} learning enables re-training of the model based on new traction conditions and a prior motion model.
-In their work, they show that weighted~\ac{BLR} performs well to adapt to slight changes in traction condition, both artificially generated and through slope variation.
-However, no study investigates the performance of adaptive modeling with respect to the degree of traction variability and what is the operational limit.
+In their work, they show that weighted~\ac{BLR} performs well in adapting to slight changes in traction conditions, both artificially generated and through slope variation.
+However, no study has investigated the performance of adaptive modeling with respect to the degree of traction variability and what is the operational limit.
 By leveraging the~\ac{DRIVE} protocol to gather two distinct datasets, namely on hard and deep snow, we could simulate such changes in traction and analyse the performance of weighted~\ac{BLR} learning.
 In the case of failure, it will be an opportunity to develop improvements to this adaptive modeling approach, increasing its robustness to significant variation in traction.
 
 \subsection{\ac{DRIVE} impact on path following}
 Lastly, we have developed a predictive control library in the context of industrial demonstrations for this project.\footnote{\url{https://github.com/norlab-ulaval/norlab_controllers}}
-Such controllers are based on the~\ac{MPC} algorithm, enabling high speed path following with low tracking error.
+Such controllers are based on the~\ac{MPC} algorithm, enabling high-speed path following with low tracking error.
 In our case, we have implemented a simplified version of the slip-aware~\ac{MPC} controlled proposed by~\citet{Hewing2020}.
-Since the motion model acts as a interchangeable module for such controllers, the prediction accuracy improvements reached through our work on the~\ac{DRIVE} protocol will most likely improve~\ac{MPC} path following performance.
+Since the motion model acts as an interchangeable module for such controllers, the prediction accuracy improvements reached through our work on the~\ac{DRIVE} protocol will most likely improve~\ac{MPC} path following performance.
 A last interesting result would be to quantify the path following error improvement reached through training the slip learning model with a~\ac{DRIVE}-gathered training dataset instead of manual driving.
 Typically, human driving data is limited in driving velocity since it is the first time for which the vehicle navigated the target trajectory.
 Our hypothesis is that by training the model through~\ac{DRIVE}, path following performance at high speed is improved as soon as the first time the~\ac{UGV} executes the desired trajectory.
@@ -76,31 +76,37 @@ Our hypothesis is that by training the model through~\ac{DRIVE}, path following 
 In this section, a plan for the upcoming steps for this thesis is presented. 
 A Gantt chart is shown in~\autoref{fig:gantt}, providing visual support for the planning presented.
 The remaining work is split into three main categories, namely thesis writing, \emph{ICRA} paper finalization and thesis review and defense.
+\setlength{\fboxsep}{9pt}
+\begin{figure}[h!]
+	\centering
+	\input{gantt_admin}
+	\caption{Gantt chart of the remaining tasks left to complete this thesis and planning for their completion leading to August 2024.}
+	\label{fig:gantt}
+\end{figure}
+\setlength{\fboxsep}{12pt}
 
-The thesis will be written via articles insertion, where the articles selected are presented in~\autoref{sec:first_author}.
+The thesis will be written via article insertion, where the articles selected are presented in~\autoref{sec:first_author}.
 This task will require appending every article which will represent a distinct thesis chapter.
 Mathematical notation will be modified to be uniform for all articles and facilitate thesis reading and review.
-Then, I will write on writing the final chapter, which will present the results of the experiments describes in~\autoref{sec:future_work}.
+Then, I will write on writing the final chapter, which will present the results of the experiments described in~\autoref{sec:future_work}.
 My planning is to invest half days on thesis writing and the other half days on final experiments to maintain motivation through the writing process.
 For these final experiments, I will focus on dynamic modeling during the first two months since the data is already recorded and the result can be produced generally faster.
 Then, when winter comes, I will record the data for the hard and deep snow experiments and produce the results in the first two months of 2024.
 Final chapter writing will be done simultaneously as those last experiments are conducted.
+An optional extra paper will be written between the initial thesis submission and thesis defense if the final results are conclusive and time allows.
+For this work, the target publication venue will most likely be~\emph{IEEE Robotics and Automation Letters (RAL)}.\footnote{\url{https://www.ieee-ras.org/publications/ra-l}}
 
 Furthermore, since our work on~\ac{DRIVE} is undergoing the peer review process, we will receive the results in January 2024.
-Paper improvements will need to be prioritized at this time for paper re-submission which will most likely be due for end of January 2024.
+Paper improvements will need to be prioritized at this time for paper re-submission which will most likely be due at the end of January 2024.
 Then, the official paper presentation will be done during the three weeks leading to the conference, including a dry run in the laboratory to fetch initial feedback and maximize the presentation quality.
-Then, from May 14th to 17th 2024, I will attend the conference to present our paper on site.
+Then, from May 14th to 17th 2024, I will attend the conference to present our paper on-site.
 In the case the paper is rejected at the conference, the reviews will still be into account and the paper will be improved and re-submitted to an alternative venue.
 In this case, slight changes to the planning presented in this section will be made to ensure thesis defense still happens in August 2024.
 
-Lastly, once the thesis is submitted, a delay will originate
-%TODO: Complete this section with ULAVAL standards.
+Lastly, once the thesis is submitted, we will follow standard academic delays defined by Université Laval for review, corrections and defense.
+A total of 5 months is scheduled between thesis submission and graduation, up to August 2024.
+This will allow time to validate the initial submission, have the committee review it, defend the thesis and produce the final version.
+With around a month of contingency, this planning will conclude the work done on this thesis.
 
-\setlength{\fboxsep}{9pt}
-\begin{figure}[htbp]
-	\centering
-	\input{gantt_admin}
-	\caption{Gantt chart of the remaining tasks left to do to complete this thesis and planning for their completion leading to August 2024.}
-	\label{fig:gantt}
-\end{figure}
-\setlength{\fboxsep}{12pt}
+
+

@@ -1,18 +1,18 @@
 \section{Introduction}
 \label{sec:introduction}
 
-The field of mobile robotics has known significant advances in the last decade, leading to potentially disruptive innovations in automation for various industries.
+The field of mobile robotics has made significant advances in the last decade, leading to potentially disruptive innovations in automation for various industries.
 Autonomous systems are currently mature enough to be functional in controlled and structured operational environments, such as warehouses and urban areas under ideal weather.
-\acp{UGV} are proving to be effective solutions to current society issues related to labor shortage, workplace security and operational efficiency. 
-However, such issues are greater for industries industries such as agriculture, forestry, defense, mining and search and rescue,  which require operation in outdoors, uncontrolled environments.
+\acp{UGV} are proving to be effective solutions to current societal issues related to labor shortage, workplace security and operational efficiency. 
+However, such issues are greater for industries such as agriculture, forestry, defense, mining and search and rescue,  which require operation in outdoors, uncontrolled environments.
 In these cases, systems are subject to a higher spectrum of environmental hazards, such as harsh weather, traction variability and deployment in remote environments.
 However, as stated by~\citet{VanBrummelen2018}, challenges inherent to these conditions remain an open question.
 
-This work aims to extend proficiency and robustness of autonomous navigation systems to off-road environments and harsh weather. 
+This work aims to extend the proficiency and robustness of autonomous navigation systems to off-road environments and harsh weather. 
 Autonomous navigation can be split into three key components: path planning, path following and localization. 
 This work mainly focuses on path following, with some contributions to localization.
-For path following, the key problems related to navigating in such environments are the high variability of wheel-to-ground traction and complex vehicle dynamics.
-For localization, the key problems are related to navigating in~\ac{GNSS}-denied conditions, low geometrical constraints and dynamic environments.
+For path following, the key problems related to navigating in such environments are the high variability of wheel-to-ground traction and complex vehicle dynamics~\citep{Baril2020}.
+For localization, the key problems are related to navigating in~\ac{GNSS}-denied conditions, low geometrical constraints and dynamic environments~\citep{Baril2022}.
 In all, the research question for this work can be stated as follows:
 
 \begin{center}
@@ -21,20 +21,20 @@ In all, the research question for this work can be stated as follows:
 	}
 \end{center}
 
-A~\ac{UGV} motion model is a key component to compute optimal commands with respect to motion predictions and provide localization prior for localization systems. %TODO CITATIONS
-Thus, this research project is focused at minimizing motion prediction error for models, which is directly correlated with path following and localization errors. 
+A~\ac{UGV} motion model is a key component to compute optimal commands with respect to motion predictions~\citep{Brunke2022} and provide localization prior for localization systems~\citep{Dumbgen2023}. 
+Thus, this research project is focused on minimizing motion prediction error for models, which is directly correlated with path following and localization errors. 
 Current approaches for~\ac{UGV} modeling belong to two families: Model-based, divided between kinematic and dynamic models, and Learning-based, leveraging machine learning and driving data to predict motion.
-Both kinematic models and learning-based approaches share the advantage that they have a low expertise requirement for deployment and require a training dataset to reduce prediction error, leading them being the most popular choice.
+Both kinematic models and learning-based approaches share the advantage that they have a low expertise requirement for deployment and require a training dataset to reduce prediction error, leading to them being the most popular choice.
 To answer the aforementioned research question, three key issues were identified:
 
 \begin{enumerate}\bfseries
-  	\item How does~\ac{UGV} behavior differ between concrete and snow-covered terrain navigating. What kinematic model behaves best for both?
+  	\item How does~\ac{UGV} behavior differ between concrete and snow-covered terrain navigating? What kinematic model behaves best for both?
   	\item How can we standardize training dataset gathering and improve vehicle slip learning?
 	\item What are the impacts of the boreal forest environment and winter weather on lidar-based localization?
 \end{enumerate}
 
 These key issues guide the scientific contributions that were made through this work.
-The reminder of this document describes the current scientific production done through this project and upcoming plan up to thesis submission.
+The remainder of this document describes the current scientific production done through this project and the upcoming plan up to thesis submission.
 More specifically,~\autoref{sec:submitted} describes the currently submitted and published research work, summarizing contributions and lessons learned for each paper. 
-Afterwards,~\autoref{sec:future_work} details the remaining research work~\autoref{sec:schedule} and provides a schedule leading to thesis submission.
+Afterwards,~\autoref{sec:future_work} details the remaining research work and~\autoref{sec:schedule} provides a schedule leading to thesis submission.
 Lastly,~\autoref{sec:conclusion} provides a brief conclusion.
