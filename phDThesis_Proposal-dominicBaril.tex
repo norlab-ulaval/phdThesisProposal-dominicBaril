@@ -95,7 +95,7 @@ In these cases, systems are subject to a higher spectrum of environmental hazard
 However, as stated by~\citet{VanBrummelen2018}, challenges inherent to these conditions remain an open question.
 
 This thesis work aims to extend the proficiency and robustness of autonomous navigation systems to off-road environments and harsh weather. 
-Autonomous navigation can be split into three key components: path planning, path following and localization. 
+Autonomous navigation can be split into three key components: localization, path planning and path following. 
 This work mainly focuses on path following, with some contributions to localization.
 For path following, the key problems related to navigating in such environments are the high variability of wheel-to-ground traction and complex vehicle dynamics~\citep{Baril2020}.
 For localization, the key problems are related to navigating in~\ac{GNSS}-denied conditions, low geometrical constraints and dynamic environments~\citep{Baril2022}.
@@ -103,13 +103,13 @@ In all, the research question for this work can be stated as follows:
 
 \begin{center}
 	\emph{
-		How to increase robustness of~\ac{UGV} path following and localization for off-road and winter conditions?
+		How to increase the robustness of~\ac{UGV} path following and localization for off-road and winter conditions?
 	}
 \end{center}
 
 A~\ac{UGV} motion model is a key component to compute optimal commands with respect to motion predictions~\citep{Brunke2022} and provide localization prior for localization systems~\citep{Dumbgen2023}. 
 Thus, this research project is focused on minimizing motion prediction error for models, which is directly correlated with path following and localization errors. 
-Current approaches for~\ac{UGV} modeling belong to two families: Model-based, divided between kinematic and dynamic models, and Learning-based, leveraging machine learning and driving data to predict motion.
+Current approaches for~\ac{UGV} modeling belong to two families: model-based, divided between kinematic and dynamic models, and learning-based, leveraging machine learning and driving data to predict motion.
 Both kinematic models and learning-based approaches share the advantage that they have a low expertise requirement for deployment and require a training dataset to reduce prediction error, leading to them being the most popular choice.
 To answer the aforementioned research question, three key issues were identified:
 
@@ -133,7 +133,7 @@ Lastly,~\autoref{sec:conclusion} provides a brief conclusion.
 This section describes the current scientific done through this Ph.D. thesis work and collaborations done with other researchers. 
 First, the three articles produced for which I acted as first author.
 All of these scientific contributions are related to the subproblems stated in~\autoref{sec:introduction}.
-Then all of the worth in which I have participated as co-author is described briefly.
+Then all of the work in which I have participated as co-author is described briefly.
 Since mobile robotics is a field requiring various expertise and human resources to conduct field deployments, all scientific production presented includes multiple co-authors.
 
 %\subsection{Format de soumission des papiers avec co-auteurs}
@@ -149,9 +149,9 @@ Since mobile robotics is a field requiring various expertise and human resources
 \begin{center}
 	\textbf{\fullcite{Baril2020}}
 \end{center}
+
 The first article that I have published was submitted to the \emph{Conference on Robot and Vision (CRV)}, in May 2020.
 This article aims to evaluate the performance of~\acp{SSMR} kinematic motion models on dry concrete and snow-covered terrain.
-For this article
 In this article, we collected a total of~\SI{2}{\kilo\meter} of human driving data to evaluate four kinematic models from the literature.
 We leverage lidar point cloud registration based on the~\ac{ICP} algorithm to generate ground truth localization.
 This work received the \textbf{Best Robot Paper Award} for the CRV conference this year.
@@ -164,13 +164,13 @@ The resulting contributions are as follows:
 \end{enumerate}
 
 The four kinematic models evaluated are the extended differential-drive asymmetrical, the extended differential-drive symmetrical~\citep{Mandow2007}, the full linear~\citep{Anousaki2004} and the~\ac{ROC}-based~\citep{Wang2015}.
-We also show that models with fewer parameters tend to perform better for angular prediction and models with more parameters perform better for translation prediction, due to their ability to predict non-zero lateral motion.
+We show that models with fewer parameters tend to perform better for angular prediction and models with more parameters perform better for translation prediction, due to their ability to predict non-zero lateral motion.
 However, once trained, the performance of all models is similar for both terrain types, suggesting that all kinematic models evaluated behave similarly.
 The largest prediction error occurs when the vehicle's angular velocity is at its maximum, which leads to the highest amount of vehicle slip.
 
 Additionally, training kinematic models with empirical driving data leads to significant prediction error reduction, for both concrete and snow-covered terrain.
 The relation between training window and prediction error is also studied in this work, clearly showing that models perform best when predicting for the same horizon for which they were trained.
-We show that for the same commanded angular velocity, angular velocity is higher on snow-covered terrain than on concrete. 
+We show that for the same commanded angular velocity, observed body angular velocity is higher on snow-covered terrain than on concrete. 
 This phenomenon is due to the high friction caused by the tire deformation occurring during skidding on concrete, compared to soft terrain deformation on snow-covered terrain.
 
 The take-home message for this published paper was that kinematic motion models are adequate for predicting~\ac{SSMR} motion, both on dry concrete and snow-covered terrain, however, they require a training dataset dependent to vehicle and terrain properties.
@@ -196,7 +196,8 @@ For this work, the contributions are as follows:
 	\item A novel slip-based \ac{UGV} motion prediction model, leveraging the accuracy of model-based approaches and the minimal system characterization requirement of learning-based approaches.
 \end{enumerate}
 As shown in our previously published work~\citep{Baril2020}, a training dataset specific to vehicle and terrain properties is key to reducing motion prediction error.
-Most work on~\ac{UGV} motion modeling includes training dataset gathering, however, there exist little-to-no guidelines available to reproduce their work.
+Most work on~\ac{UGV} motion modeling includes training dataset gathering.
+However, there exist little-to-no guidelines available to reproduce their work.
 \ac{DRIVE} enables automatic~\ac{UGV} input-space characterization and training dataset gathering by sampling uniformly through the input-space.
 We show that this protocol leads to significantly increased prediction performance when compared to manual driving and~\acf{ROC} stimulation approaches.
 Another key finding is that for all experiments conducted, models reach convergence with a maximum of~\SI{46}{\sec} of driving data.
@@ -207,7 +208,7 @@ Furthermore, we propose a novel slip learning model that outperforms similar lea
 Contrarily to our previous work~\citep{Baril2020}, we rely on additive slip, which facilitates slip learning since slip is computed by subtracting the commanded body velocity to the observed body velocity, similarly as proposed by~\citet{Seegmiller2014}.
 For slip learning, we rely on~\ac{BLR}, which enables fast prediction and training, which is ideal for real-time~\ac{UGV} deployment~\citep{Mckinnon2019}.
 We show that by leveraging dynamics-aware basis functions for~\ac{BLR}, we have significant slip prediction performance improvement over the baseline~\ac{BLR} learning approach, which learns vehicle acceleration.
-The operational limit for our model is reached on the ice rink experiments, where extreme~\ac{UGV} severely impacts~\ac{UGV} motion.
+The operational limit for our model is reached on the ice rink experiments, where extreme~\ac{UGV} slip severely impacts motion.
 
 The biggest lesson learned is that~\ac{DRIVE} enables training dataset gathering for model convergence in~\SI{46}{\sec}, for our slip-\ac{BLR} model, which outperforms similar learning approaches.
 This protocol is interesting for field operations as it enables users to generate an accurate motion prediction model for any new~\ac{UGV} or environment configuration, effectively saving a lot of deployment resources and battery usage.
@@ -219,11 +220,12 @@ This experimental dataset is also ideal for investigating the limit of adaptive 
 \end{center}
 
 The third article that concludes the list of articles submitted as first author was submitted and published in the~\emph{Field Robotics} journal.
-In this paper, we leverage the models evaluated in our previous work with our lidar-based localization and mapping system to create the~\ac{WILN} autonomous navigation system and conducted~\SI{18.8}{\kilo\meter} of autonomous driving.
+In this paper, we leverage the models evaluated in our previous work with our lidar-based localization and mapping system to create the~\ac{WILN} autonomous navigation system. 
+With this system, we conducted~\SI{18.8}{\kilo\meter} of autonomous driving in a boreal forst, during wintertime, a first in the literature.
 For this work, we were awarded the~\textbf{Relève Etoile Louis-Berlinguet Award} from FRQNT.
 We leverage the data acquired to produce a field report documenting the impact of the boreal forest biome and winter weather on lidar-based autonomous navigation.
 The dataset gathered in the field is available online and open-source.\footnote{\hsize=0.87\textwidth\url{https://github.com/norlab-ulaval/Norlab_wiki/wiki/Kilometer-scale-autonomous-navigation-in-subarctic-forests:-challenges-and-lessons-learned}}
-A seminar was conducted for this work.\footnote{\url{https://www.youtube.com/watch?v=VWzKZvtnInA}}
+A seminar was also given for this work.\footnote{\url{https://www.youtube.com/watch?v=VWzKZvtnInA}}
 The specific contributions for this article are as follows:
 \begin{enumerate}
 	\item A comprehensive study of the impact of the boreal forest biome on lidar- and \ac{GNSS}-based localization and autonomous navigation;  
@@ -268,7 +270,7 @@ I have also post-processed the navigation data after the competition and generat
 \textbf{\fullcite{Courcelle2022}}:
 This article is a study of the impact of extreme precipitation on lidar-based localization, more precisely point cloud registration with the~\ac{ICP} algorithm.
 A novel lidar scan obstruction metric is proposed, enabling proper comparison and analysis of the impact of harsh weather.
-We rely on data collected with our own robot platforms and the~\ac{CADC} Dataset to study the relation between this metric and lidar-based localization error, with~\ac{GNSS} as ground truth.
+We rely on data collected with our own robot platforms and the~\ac{CADC} Dataset~\citep{Pitropov2021} to study the relation between this metric and lidar-based localization error, with~\ac{GNSS} as ground truth.
 The results suggest that extreme precipitation has a significant impact on the~\ac{UGV}'s ability to localize, however not enough data is available under such conditions.
 Gathering more data under extreme precipitation remains an open problem.
 In this work, I participated as an advisor on data analysis and experiments.
@@ -287,9 +289,9 @@ I was responsible for finalizing most of the figures and participated in writing
 \label{sec:future_work}
 
 The three articles that I have written as first author presented in~\autoref{sec:submitted} will represent the majority of the thesis by articles.
-Additionally, to maximize the value of the data gathered, especially through the work related to~\ac{DRIVE}, a few additional experiments will be conducted.
+Afterwards, to maximize the value of the data gathered through the work related to~\ac{DRIVE}, a few additional experiments will be conducted.
 First, an analysis of the performance improvement that can be reached through dynamic modelling for navigation on ice will be conducted.
-Second, an investigation of the limit of current adaptive models will be conducted by artificially mixing datasets on different terrains.
+Second, an investigation of the limit of current adaptive models will be done by artificially mixing datasets on different terrains.
 Thirdly, we will study of the impact of~\ac{DRIVE}~\ac{UGV} characterization on path following performance under a realistic deployment setting.
 These results will be appended to the published and submitted articles in the thesis to complete it.
 A schedule for the remaining work and Gantt chart are presented in~\autoref{sec:schedule}
