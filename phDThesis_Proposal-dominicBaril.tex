@@ -35,8 +35,8 @@
 
 %\usepackage{ulem}
 
-\usepackage{array, tabularx} % FP: lire le fichier latex good practice
-\renewcommand{\arraystretch}{1.2} 
+%\usepackage{array, tabularx} % FP: lire le fichier latex good practice
+%\renewcommand{\arraystretch}{1.2} 
 
 % Fill the template with text
 \usepackage{lipsum}
@@ -75,6 +75,7 @@
 \acrodef{GF}{Gyro-free}
 \acrodef{INS}{Inertial Navigation System}
 \acrodef{MPC}{Model Predictive Control}
+\acrodef{FRQNT}{Fond de recherche du Québec en Natures et Technologies}
 
 
 %================================================================
@@ -146,9 +147,9 @@ Since mobile robotics is a field requiring various expertise and human resources
 
 \subsection{Articles published and submitted as first author}
 \label{sec:first_author}
-\begin{center}
+%\begin{center}
 	\textbf{\fullcite{Baril2020}}
-\end{center}
+%\end{center}
 
 The first article that I have published was submitted to the \emph{Conference on Robot and Vision (CRV)}, in May 2020.
 This article aims to evaluate the performance of~\acp{SSMR} kinematic motion models on dry concrete and snow-covered terrain.
@@ -177,9 +178,15 @@ The take-home message for this published paper was that kinematic motion models 
 During the experimental work conducted for this paper, we imitated similar work by having a human operator stimulate as many commands as possible, however this process led to biased command stimulation and forward-only driving and proved to be time-consuming.
 Since deploying~\acp{UGV} in off-road environments is a complex endeavor, reducing the time required to generate a motion model that is accurate enough for stable autonomous navigation is key.
 
-\begin{center}
+In this paper, my role was to lead the literature review and select the kinematic models to be evaluated.
+I also designed the experimental protocol for gathering the navigation dataset, but the dataset was gathered by co-authors.
+Once the data was collected, I processed it and produced the results that were used for the article.
+This analysis work was validated by a post-doctoral fellow, which is also a co-author. 
+Lastly, I have led the redaction of the article, with significant support from both supervisors and all co-authors.
+\\ \\
+%\begin{center}
 	\textbf{\fullcite{Baril2023}}
-\end{center}
+%\end{center}
 
 My second article as first author was submitted to the \emph{International Conference on Robotics and Automation (ICRA) 2024}.
 It is currently under review, with a result expected in January 2024.
@@ -215,14 +222,20 @@ This protocol is interesting for field operations as it enables users to generat
 As future work, we want to investigate dynamic modeling on the ice rink experiment to see if richer modeling approaches can improve prediction accuracy under dynamically complex driving conditions.
 This experimental dataset is also ideal for investigating the limit of adaptive modeling approaches by simulating a robot instantly changing terrain type.
 
-\begin{center}
+In this paper, I have designed the~\ac{DRIVE} protocol and iteratively improved over two years of experimental work.
+I have received significant support from colleagues at the lab for testing the protocol, including all co-authors.
+Once the protocol was ready, I have lead the dataset gathering work for all robots in all environments, always with support from co-authors.
+Afterwards, I was responsible for processing the dataset and implementing the models which we compared our contributions to, as well as completing the literature review, with high-level support from both supervisors.
+Lastly, I have completed most of the article writing and figures production autonomously as it is the third article I complete as first author, with support from co-authors to provide reviews and finish figures.
+\\ \\
+%\begin{center}
 	\textbf{\fullcite{Baril2022}}
-\end{center}
+%\end{center}
 
 The third article that concludes the list of articles submitted as first author was submitted and published in the~\emph{Field Robotics} journal.
 In this paper, we leverage the models evaluated in our previous work with our lidar-based localization and mapping system to create the~\ac{WILN} autonomous navigation system. 
-With this system, we conducted~\SI{18.8}{\kilo\meter} of autonomous driving in a boreal forst, during wintertime, a first in the literature.
-For this work, we were awarded the~\textbf{Relève Etoile Louis-Berlinguet Award} from FRQNT.
+With this system, we conducted~\SI{18.8}{\kilo\meter} of autonomous driving in a boreal forest, during wintertime, a first in the literature.
+For this work, we were awarded the~\textbf{Relève Etoile Louis-Berlinguet Award} from the~\ac{FRQNT}.
 We leverage the data acquired to produce a field report documenting the impact of the boreal forest biome and winter weather on lidar-based autonomous navigation.
 The dataset gathered in the field is available online and open-source.\footnote{\hsize=0.87\textwidth\url{https://github.com/norlab-ulaval/Norlab_wiki/wiki/Kilometer-scale-autonomous-navigation-in-subarctic-forests:-challenges-and-lessons-learned}}
 A seminar was also given for this work.\footnote{\url{https://www.youtube.com/watch?v=VWzKZvtnInA}}
@@ -248,6 +261,14 @@ First, localization robustness to areas with corridor-like environments and dyna
 Secondly, kinematic path following controllers are suitable for condensed or shallow snow but fail in deep snow.
 Thirdly, energy consumption estimation and prediction are complex in cold weather, however they are key to maximize~\ac{UGV} usage and prevent breakdowns in remote areas.
 While those are the main challenges observed, multiple more lessons learned are highlighted in this work.
+
+For this article, I have co-developed the~\ac{WILN} system with a co-author.
+I have then lead the dataset gathering work, with significant support from all co-authors as this was the most labor-extensive task.
+Once the dataset was gathered,  I have coordinated the data processing, delegating the work to co-authors based on their expertise.
+Afterwards, I analyzed the data and produced initial results with significant support from both supervisors.
+For the paper production, I was responsible for writing most of the article, with support from co-authors for sections specific to their expertise.
+Final figures were produced by a post-doctoral co-author.
+Lastly, I have benefited from extensive reviews for all co-authors, significantly improving the quality of the article.
 
 \subsection{Articles published and submitted as co-author}
 
@@ -289,67 +310,64 @@ I was responsible for finalizing most of the figures and participated in writing
 \label{sec:future_work}
 
 The three articles that I have written as first author presented in~\autoref{sec:submitted} will represent the majority of the thesis by articles.
-Afterwards, to maximize the value of the data gathered through the work related to~\ac{DRIVE}, a few additional experiments will be conducted.
-First, an analysis of the performance improvement that can be reached through dynamic modelling for navigation on ice will be conducted.
-Second, an investigation of the limit of current adaptive models will be done by artificially mixing datasets on different terrains.
-Thirdly, we will study of the impact of~\ac{DRIVE}~\ac{UGV} characterization on path following performance under a realistic deployment setting.
-These results will be appended to the published and submitted articles in the thesis to complete it.
+A last chapter will be written in the thesis in which we will study of the impact of the~\ac{DRIVE}~\ac{UGV} characterization protocol on path following performance under a realistic deployment setting.
+These results will be appended to the thesis to complete it.
 A schedule for the remaining work and Gantt chart are presented in~\autoref{sec:schedule}
 
-\subsection{Dynamic modeling on ice}
-We learned through our~\ac{DRIVE} work that slip learning model reach their functional limit under extreme conditions, such as navigation on an ice rink, as shown in~\autoref{fig:warthog-ice}.
-Indeed, the low wheel-to-ground friction leads to high motion inertia, which is not modeled by slip learning.
-While a lot of attention is given to generating and validating dynamic motion model for high-speed driving on concrete~\citep{Djeumou2023} or gravel~\citep{Williams2018}, not much work has focused on investigating their functionality on ice.
-Since we have already completed the work to collect a~\SI{20}{\min} dataset of uniform vehicle input sampling, the time required to investigate the predictive performance of dynamic models on this dataset is much smaller.
-\begin{SCfigure}[\sidecaptionrelwidth][h!]
-	\centering
-	\includegraphics[width=0.7\textwidth]{figs/warthog_ice.png}
-	\caption{
-		A photo is the Warthog, our~\SI{470}{\kilo\gram} research~\ac{SSMR}.
-		Via the~\ac{DRIVE} protocol, we have collected a~\SI{20}{\min} dataset of the vehicle exectuting a large spectrum of commands.
-		This dataset shows the limit of our current slip learning model, motivating an investigation of dynamic model performance.
-	}
-	\label{fig:warthog-ice}
-\end{SCfigure}
+%\subsection{Dynamic modeling on ice}
+%We learned through our~\ac{DRIVE} work that slip learning model reach their functional limit under extreme conditions, such as navigation on an ice rink, as shown in~\autoref{fig:warthog-ice}.
+%Indeed, the low wheel-to-ground friction leads to high motion inertia, which is not modeled by slip learning.
+%While a lot of attention is given to generating and validating dynamic motion model for high-speed driving on concrete~\citep{Djeumou2023} or gravel~\citep{Williams2018}, not much work has focused on investigating their functionality on ice.
+%Since we have already completed the work to collect a~\SI{20}{\min} dataset of uniform vehicle input sampling, the time required to investigate the predictive performance of dynamic models on this dataset is much smaller.
+%\begin{SCfigure}[\sidecaptionrelwidth][h!]
+%	\centering
+%	\includegraphics[width=0.7\textwidth]{figs/warthog_ice.png}
+%	\caption{
+%		A photo is the Warthog, our~\SI{470}{\kilo\gram} research~\ac{SSMR}.
+%		Via the~\ac{DRIVE} protocol, we have collected a~\SI{20}{\min} dataset of the vehicle exectuting a large spectrum of commands.
+%		This dataset shows the limit of our current slip learning model, motivating an investigation of dynamic model performance.
+%	}
+%	\label{fig:warthog-ice}
+%\end{SCfigure}
 
-This work could lead to contributions related to the dynamic model formulation for~\acp{SSMR} navigating on ice, or learning dynamic model parameters through~\ac{BLR} to facilitate deployment of dynamic models.
-The evaluation pipeline for model training and prediction error over an entire dataset is already set up and ready to compare dynamic models to slip learning.\footnote{\url{https://github.com/norlab-ulaval/norlab_WMRD}}
-Improvements could also be made to the~\ac{DRIVE} protocol to sample additional dynamic variables, such as body acceleration.
-\subsection{Adaptive motion modeling}
-Next, I plan to study the performance of adaptive modeling under extreme traction variation.
-To illustrate this challenge, \autoref{fig:snow_var} shows two use cases, namely hard and deep snow navigation, for which traction varies significantly.
-In the case of deep snow navigation, the~\ac{SSMR} almost reached immobilization, which means that switching between both conditions produces the largest change in traction conditions that can be observed for a specific~\ac{UGV}.
-This is an ideal case to investigate the limits of current adaptive modeling approach, which is easy to integrate with our slip learning model.
-\begin{figure}[h!]
-	\begin{center}
-		\begin{subfigure}[b]{0.49\textwidth}
-			\includegraphics[width=\linewidth]{figs/warthog_hard_snow.pdf}
-			\caption{}
-			\label{fig:hard_snow}
-		\end{subfigure}%
-		~
-		\begin{subfigure}[b]{0.49\textwidth}
-			\includegraphics[width=\linewidth]{figs/snow_depth.pdf}
-			\caption{}
-			\label{fig:deep_snow}
-		\end{subfigure}%
-		\caption{
-			Example of distinct terrain navigating encountered during wintertime off-road navigation with the Warthog platform.
-			\textbf{(a)}: Hard snow navigation, with limited slip, representing nominal navigation.
-			\textbf{(b)}: Deep snow navigation, with high slip, representing an edge case for~\ac{SSMR} motion modeling.
-		}
-		\label{fig:snow_var}
-	\end{center}
-\end{figure}
+%This work could lead to contributions related to the dynamic model formulation for~\acp{SSMR} navigating on ice, or learning dynamic model parameters through~\ac{BLR} to facilitate deployment of dynamic models.
+%The evaluation pipeline for model training and prediction error over an entire dataset is already set up and ready to compare dynamic models to slip learning.\footnote{\url{https://github.com/norlab-ulaval/norlab_WMRD}}
+%Improvements could also be made to the~\ac{DRIVE} protocol to sample additional dynamic variables, such as body acceleration.
+%\subsection{Adaptive motion modeling}
+%Next, I plan to study the performance of adaptive modeling under extreme traction variation.
+%To illustrate this challenge, \autoref{fig:snow_var} shows two use cases, namely hard and deep snow navigation, for which traction varies significantly.
+%In the case of deep snow navigation, the~\ac{SSMR} almost reached immobilization, which means that switching between both conditions produces the largest change in traction conditions that can be observed for a specific~\ac{UGV}.
+%This is an ideal case to investigate the limits of current adaptive modeling approach, which is easy to integrate with our slip learning model.
+%\begin{figure}[h!]
+%	\begin{center}
+%		\begin{subfigure}[b]{0.49\textwidth}
+%			\includegraphics[width=\linewidth]{figs/warthog_hard_snow.pdf}
+%			\caption{}
+%			\label{fig:hard_snow}
+%		\end{subfigure}%
+%		~
+%		\begin{subfigure}[b]{0.49\textwidth}
+%			\includegraphics[width=\linewidth]{figs/snow_depth.pdf}
+%			\caption{}
+%			\label{fig:deep_snow}
+%		\end{subfigure}%
+%		\caption{
+%			Example of distinct terrain navigating encountered during wintertime off-road navigation with the Warthog platform.
+%			\textbf{(a)}: Hard snow navigation, with limited slip, representing nominal navigation.
+%			\textbf{(b)}: Deep snow navigation, with high slip, representing an edge case for~\ac{SSMR} motion modeling.
+%		}
+%		\label{fig:snow_var}
+%	\end{center}
+%\end{figure}
 
-As proposed by~\citet{Mckinnon2019}, weighted~\ac{BLR} learning enables re-training of the model based on new traction conditions and a prior motion model.
-In their work, they show that weighted~\ac{BLR} performs well in adapting to slight changes in traction conditions, both artificially generated and through slope variation.
-However, no study has investigated the performance of adaptive modeling with respect to the degree of traction variability and what is the operational limit.
-By leveraging the~\ac{DRIVE} protocol to gather two distinct datasets, namely on hard and deep snow, we could simulate such changes in traction and analyse the performance of weighted~\ac{BLR} learning.
-In the case of failure, it will be an opportunity to develop improvements to this adaptive modeling approach, increasing its robustness to significant variation in traction.
+%As proposed by~\citet{Mckinnon2019}, weighted~\ac{BLR} learning enables re-training of the model based on new traction conditions and a prior motion model.
+%In their work, they show that weighted~\ac{BLR} performs well in adapting to slight changes in traction conditions, both artificially generated and through slope variation.
+%However, no study has investigated the performance of adaptive modeling with respect to the degree of traction variability and what is the operational limit.
+%By leveraging the~\ac{DRIVE} protocol to gather two distinct datasets, namely on hard and deep snow, we could simulate such changes in traction and analyse the performance of weighted~\ac{BLR} learning.
+%In the case of failure, it will be an opportunity to develop improvements to this adaptive modeling approach, increasing its robustness to significant variation in traction.
 
-\subsection{\ac{DRIVE} impact on path following}
-Lastly, we have developed a predictive control library in the context of industrial demonstrations for this project.\footnote{\url{https://github.com/norlab-ulaval/norlab_controllers}}
+%\subsection{\ac{DRIVE} impact on path following}
+We have developed a predictive control library in the context of industrial demonstrations for this project.\footnote{\url{https://github.com/norlab-ulaval/norlab_controllers}}
 Such controllers are based on the~\ac{MPC} algorithm, enabling high-speed path following with low tracking error.
 In our case, we have implemented a simplified version of the slip-aware~\ac{MPC} controlled proposed by~\citet{Hewing2020}.
 Since the motion model acts as an interchangeable module for such controllers, the prediction accuracy improvements reached through our work on the~\ac{DRIVE} protocol will most likely improve~\ac{MPC} path following performance.
@@ -377,11 +395,11 @@ This task will require appending every article which will represent a distinct t
 Mathematical notation will be modified to be uniform for all articles and facilitate thesis reading and review.
 Then, I will write on writing the final chapter, which will present the results of the experiments described in~\autoref{sec:future_work}.
 My planning is to invest half days on thesis writing and the other half days on final experiments to maintain motivation through the writing process.
-For these final experiments, I will focus on dynamic modeling during the first two months since the data is already recorded and the result can be produced generally faster.
-Then, when winter comes, I will record the data for the hard and deep snow experiments and produce the results in the first two months of 2024.
-Final chapter writing will be done simultaneously as those last experiments are conducted.
-An optional extra paper will be written between the initial thesis submission and thesis defense if the final results are conclusive and time allows.
-For this work, the target publication venue will most likely be~\emph{IEEE Robotics and Automation Letters (RAL)}.\footnote{\url{https://www.ieee-ras.org/publications/ra-l}}
+%For these final experiments, I will focus on dynamic modeling during the first two months since the data is already recorded and the result can be produced generally faster.
+%Then, when winter comes, I will record the data for the hard and deep snow experiments and produce the results in the first two months of 2024.
+Final chapter writing will be done after those last experiments are conducted.
+%An optional extra paper will be written between the initial thesis submission and thesis defense if the final results are conclusive and time allows.
+%For this work, the target publication venue will most likely be~\emph{IEEE Robotics and Automation Letters (RAL)}.\footnote{\url{https://www.ieee-ras.org/publications/ra-l}}
 
 Furthermore, since our work on~\ac{DRIVE} is undergoing the peer review process, we will receive the results in January 2024.
 Paper improvements will need to be prioritized at this time for paper re-submission which will most likely be due at the end of January 2024.
@@ -391,7 +409,7 @@ In the case the paper is rejected at the conference, the reviews will still be i
 In this case, slight changes to the planning presented in this section will be made to ensure thesis defense still happens in August 2024.
 
 Lastly, once the thesis is submitted, we will follow standard academic delays defined by Université Laval for review, corrections and defense.
-A total of 5 months is scheduled between thesis submission and graduation, up to August 2024.
+A total of five months is scheduled between thesis submission and graduation, up to August 2024.
 This will allow time to validate the initial submission, have the committee review it, defend the thesis and produce the final version.
 With around a month of contingency, this planning will conclude the work done on this thesis.
 
@@ -404,7 +422,7 @@ Meanwhile, I have taken part in an additional four papers as a co-author.
 This scientific production will represent the majority of the content of my article insertion thesis.
 
 For the last chapter of the thesis, I have identified three last experiments which would be relatively simple to complete considering the amount of work already completed.
-Providing these results are conclusive, they will be added in the final chapter of my thesis and potentially be used to write a final conference paper.
+Providing these results are conclusive, they will be added in the final chapter of my thesis.
 The initial thesis submission is scheduled for March 2024, leading to the defense in August 2024 according to Université Laval standards.
 
 
