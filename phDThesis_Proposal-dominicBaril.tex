@@ -109,7 +109,7 @@ In all, the research question for this work can be stated as follows:
 \end{center}
 
 A~\ac{UGV} motion model is a key component to compute optimal commands with respect to motion predictions~\citep{Brunke2022} and provide localization prior for localization systems~\citep{Dumbgen2023}. 
-Thus, this research project is focused on minimizing motion prediction error for models, which is directly correlated with path following and localization errors. 
+Thus, this research project is focused on minimizing motion prediction error for models, which is directly correlated with the path following and localization errors. 
 Current approaches for~\ac{UGV} modeling belong to two families: model-based, divided between kinematic and dynamic models, and learning-based, leveraging machine learning and driving data to predict motion.
 Both kinematic models and learning-based approaches share the advantage that they have a low expertise requirement for deployment and require a training dataset to reduce prediction error, leading to them being the most popular choice.
 To answer the aforementioned research question, three key issues were identified:
@@ -151,7 +151,7 @@ Since mobile robotics is a field requiring various expertise and human resources
 	\textbf{\fullcite{Baril2020}}
 %\end{center}
 
-The first article that I have published was submitted to the \emph{Conference on Robot and Vision (CRV)}, in May 2020.
+The first article that I published was submitted to the \emph{Conference on Robots and Vision (CRV)}, in May 2020.
 This article aims to evaluate the performance of~\acp{SSMR} kinematic motion models on dry concrete and snow-covered terrain.
 In this article, we collected a total of~\SI{2}{\kilo\meter} of human driving data to evaluate four kinematic models from the literature.
 We leverage lidar point cloud registration based on the~\ac{ICP} algorithm to generate ground truth localization.
@@ -159,8 +159,8 @@ This work received the \textbf{Best Robot Paper Award} for the CRV conference th
 A seminar was conducted for this work.\footnote{\url{https://www.youtube.com/watch?v=FjrgZMmWTNI&t=25s}}
 The resulting contributions are as follows:
 \begin{enumerate}
-	\item Validate~\ac{SSMR} kinematic motion models fitness for a heavier platform on a relatively uniform concrete terrain;
-	\item Evaluate~\ac{SSMR} kinematic motion models performance for snow-covered terrain using more than \SI{2}{\kilo\meter} of trajectories traveled; and
+	\item Validate~\ac{SSMR} kinematic motion models' fitness for a heavier platform on a relatively uniform concrete terrain;
+	\item Evaluate~\ac{SSMR} kinematic motion models' performance for snow-covered terrain using more than \SI{2}{\kilo\meter} of trajectories traveled; and
 	\item Highlight the impact of angular motion on the accuracy of \acp{SSMR} kinematic modeling.
 \end{enumerate}
 
@@ -174,21 +174,21 @@ The relation between training window and prediction error is also studied in thi
 We show that for the same commanded angular velocity, observed body angular velocity is higher on snow-covered terrain than on concrete. 
 This phenomenon is due to the high friction caused by the tire deformation occurring during skidding on concrete, compared to soft terrain deformation on snow-covered terrain.
 
-The take-home message for this published paper was that kinematic motion models are adequate for predicting~\ac{SSMR} motion, both on dry concrete and snow-covered terrain, however, they require a training dataset dependent to vehicle and terrain properties.
-During the experimental work conducted for this paper, we imitated similar work by having a human operator stimulate as many commands as possible, however this process led to biased command stimulation and forward-only driving and proved to be time-consuming.
+The take-home message for this published paper was that kinematic motion models are adequate for predicting~\ac{SSMR} motion, both on dry concrete and snow-covered terrain, however, they require a training dataset dependent on vehicle and terrain properties.
+During the experimental work conducted for this paper, we imitated similar work by having a human operator stimulate as many commands as possible, however, this process led to biased command stimulation and forward-only driving and proved to be time-consuming.
 Since deploying~\acp{UGV} in off-road environments is a complex endeavor, reducing the time required to generate a motion model that is accurate enough for stable autonomous navigation is key.
 
 In this paper, my role was to lead the literature review and select the kinematic models to be evaluated.
 I also designed the experimental protocol for gathering the navigation dataset, but the dataset was gathered by co-authors.
 Once the data was collected, I processed it and produced the results that were used for the article.
-This analysis work was validated by a post-doctoral fellow, which is also a co-author. 
+This analysis work was validated by a post-doctoral fellow, who is also a co-author. 
 Lastly, I have led the redaction of the article, with significant support from both supervisors and all co-authors.
 \\ \\
 %\begin{center}
 	\textbf{\fullcite{Baril2023}}
 %\end{center}
 
-My second article as first author was submitted to the \emph{International Conference on Robotics and Automation (ICRA) 2024}.
+My second article as the first author was submitted to the \emph{International Conference on Robotics and Automation (ICRA) 2024}.
 It is currently under review, with a result expected in January 2024.
 This article aims to solve the issue discovered in our previous work by standardizing and automating the~\ac{UGV} training dataset gathering task.
 Thus, we propose~\ac{DRIVE}, a protocol allowing to automatically generate a training dataset for commercial~\acp{UGV}.
@@ -204,7 +204,7 @@ For this work, the contributions are as follows:
 \end{enumerate}
 As shown in our previously published work~\citep{Baril2020}, a training dataset specific to vehicle and terrain properties is key to reducing motion prediction error.
 Most work on~\ac{UGV} motion modeling includes training dataset gathering.
-However, there exist little-to-no guidelines available to reproduce their work.
+However, there exist little to no guidelines available to reproduce their work.
 \ac{DRIVE} enables automatic~\ac{UGV} input-space characterization and training dataset gathering by sampling uniformly through the input-space.
 We show that this protocol leads to significantly increased prediction performance when compared to manual driving and~\acf{ROC} stimulation approaches.
 Another key finding is that for all experiments conducted, models reach convergence with a maximum of~\SI{46}{\sec} of driving data.
@@ -219,14 +219,14 @@ The operational limit for our model is reached on the ice rink experiments, wher
 
 The biggest lesson learned is that~\ac{DRIVE} enables training dataset gathering for model convergence in~\SI{46}{\sec}, for our slip-\ac{BLR} model, which outperforms similar learning approaches.
 This protocol is interesting for field operations as it enables users to generate an accurate motion prediction model for any new~\ac{UGV} or environment configuration, effectively saving a lot of deployment resources and battery usage.
-As future work, we want to investigate dynamic modeling on the ice rink experiment to see if richer modeling approaches can improve prediction accuracy under dynamically complex driving conditions.
+In future work, we want to investigate dynamic modeling on the ice rink experiment to see if richer modeling approaches can improve prediction accuracy under dynamically complex driving conditions.
 This experimental dataset is also ideal for investigating the limit of adaptive modeling approaches by simulating a robot instantly changing terrain type.
 
-In this paper, I have designed the~\ac{DRIVE} protocol and iteratively improved over two years of experimental work.
+In this paper, I designed the~\ac{DRIVE} protocol and iteratively improved over two years of experimental work.
 I have received significant support from colleagues at the lab for testing the protocol, including all co-authors.
-Once the protocol was ready, I have lead the dataset gathering work for all robots in all environments, always with support from co-authors.
+Once the protocol was ready, I led the dataset gathering work for all robots in all environments, always with support from co-authors.
 Afterwards, I was responsible for processing the dataset and implementing the models which we compared our contributions to, as well as completing the literature review, with high-level support from both supervisors.
-Lastly, I have completed most of the article writing and figures production autonomously as it is the third article I complete as first author, with support from co-authors to provide reviews and finish figures.
+Lastly, I have completed most of the article writing and figures production autonomously as it is the third article I have completed as first author, with support from co-authors to provide reviews and finish figures.
 \\ \\
 %\begin{center}
 	\textbf{\fullcite{Baril2022}}
@@ -245,8 +245,8 @@ The specific contributions for this article are as follows:
 	\item An overview of the impact of snow accumulation on the reliability of lidar-based localization over multiple days; and
 	\item A description of the \ac{WILN} system, designed to enable wintertime autonomous navigation in a boreal forest.
 \end{enumerate}
-While we have validated lidar-based localization and mapping is suitable for autonomous navigation in the test environment, we observed particular phenomenons that can lead to navigation failure, most of which are related to lidar localization.
-First, when navigating in a corridor-like forest trail, under dense vegetation, the low longitudinal geometric constraints lead to localization instability, which caused the~\ac{UGV} to crash with vegetation in some occasions.
+While we have validated lidar-based localization and mapping are suitable for autonomous navigation in the test environment, we observed particular phenomenons that can lead to navigation failure, most of which are related to lidar localization.
+First, when navigating in a corridor-like forest trail, under dense vegetation, the low longitudinal geometric constraints lead to localization instability, which caused the~\ac{UGV} to crash with vegetation on some occasions.
 Secondly, the snow accumulation causes the environment to change significantly, which is critical in areas where few man-made structures are present to support lidar-based localization.
 For those issues, we have documented the impact on our localization system and highlighted the challenges to be solved to enable true year-long autonomy in boreal forests.
 An analysis of the quality of~\ac{GNSS} signal under the dense vegetation of boreal forests was also conducted, showing that it is unsuitable for navigation in tight forest trails, but functional on larger forest paths.
@@ -256,15 +256,15 @@ We still investigated the impact of the environment on our selected kinematic pa
 Under these conditions, we show that the path following error is strongly correlated with reference path curvature, meaning that the most likely cause for path following failure is tight turning in forest trails.
 Qualitatively, we also show that deep snow navigation is complex for~\acp{SSMR} since it significantly reduces the vehicle's ability to turn.
 
-For this work, the main take-home message is that kinematic motion modeling and lidar-based localization are suitable for wintertime navigation in boreal forests, but that challenges remain to be solved for true year-long autonomy.
+For this work, the main take-home message is that kinematic motion modeling and lidar-based localization and mapping are suitable for wintertime navigation in boreal forests, but that challenges remain to be solved for true year-long autonomy.
 First, localization robustness to areas with corridor-like environments and dynamic environments should be addressed, by adapting the reference map and adding localization constraints.
 Secondly, kinematic path following controllers are suitable for condensed or shallow snow but fail in deep snow.
-Thirdly, energy consumption estimation and prediction are complex in cold weather, however they are key to maximize~\ac{UGV} usage and prevent breakdowns in remote areas.
+Thirdly, energy consumption estimation and prediction are complex in cold weather, however, they are key to maximizing~\ac{UGV} usage and preventing breakdowns in remote areas.
 While those are the main challenges observed, multiple more lessons learned are highlighted in this work.
 
 For this article, I have co-developed the~\ac{WILN} system with a co-author.
-I have then lead the dataset gathering work, with significant support from all co-authors as this was the most labor-extensive task.
-Once the dataset was gathered,  I have coordinated the data processing, delegating the work to co-authors based on their expertise.
+I have then led the dataset gathering work, with significant support from all co-authors as this was the most labor-intensive task.
+Once the dataset was gathered,  I coordinated the data processing, delegating the work to co-authors based on their expertise.
 Afterwards, I analyzed the data and produced initial results with significant support from both supervisors.
 For the paper production, I was responsible for writing most of the article, with support from co-authors for sections specific to their expertise.
 Final figures were produced by a post-doctoral co-author.
@@ -276,7 +276,7 @@ Lastly, I have benefited from extensive reviews for all co-authors, significantl
 This article improves point cloud registration accuracy under aggressive motion by accounting for the error related to point cloud deskewing.
 Skewing is lidar scan error originating from the assumption that the sensor is static during the sweep.
 Under aggressive motion, characterized by high body velocities and acceleration, this assumption is broken, leading to a high scan error.
-For this work, I built the experimental rig and supported for the experimental work.
+For this work, I built the experimental rig and supported the experimental work.
 I have also participated in generating the results and for redaction.
 \\
 
@@ -284,7 +284,7 @@ I have also participated in generating the results and for redaction.
 This article describes the system that was built for the CTU-CRAS-Norlab team at the DARPA Subterranean Challenge Urban Circuit.
 This is the biggest robotics competition in the world and our team managed to class third overall and first among self-funded teams.
 The goal was to deploy a heterogeneous robot fleet in an unknown underground environment and to detect and localize artifacts within~\SI{5}{\centi\meter} of their true position.
-For this work, I co-built the~\ac{UGV} that was contributed by Norlab to the competition and participated in its integration to the complete fleet.
+For this work, I co-built the~\ac{UGV} which was contributed by Norlab to the competition and participated in its integration to the complete fleet.
 I have also post-processed the navigation data after the competition and generated the 3D maps that were used as figures in the article.
 \\
 
@@ -309,10 +309,10 @@ I was responsible for finalizing most of the figures and participated in writing
 \section{Work left before submitting the thesis}
 \label{sec:future_work}
 
-The three articles that I have written as first author presented in~\autoref{sec:submitted} will represent the majority of the thesis by articles.
-A last chapter will be written in the thesis in which we will study of the impact of the~\ac{DRIVE}~\ac{UGV} characterization protocol on path following performance under a realistic deployment setting.
+The three articles that I have written as the first author presented in~\autoref{sec:submitted} will represent the majority of the thesis by articles.
+A last chapter will be written in the thesis in which we will study the impact of the~\ac{DRIVE}~\ac{UGV} characterization protocol on path following performance under a realistic deployment setting.
 These results will be appended to the thesis to complete it.
-A schedule for the remaining work and Gantt chart are presented in~\autoref{sec:schedule}
+A schedule for the remaining work and a Gantt chart are presented in~\autoref{sec:schedule}
 
 %\subsection{Dynamic modeling on ice}
 %We learned through our~\ac{DRIVE} work that slip learning model reach their functional limit under extreme conditions, such as navigation on an ice rink, as shown in~\autoref{fig:warthog-ice}.
@@ -370,7 +370,7 @@ A schedule for the remaining work and Gantt chart are presented in~\autoref{sec:
 We have developed a predictive control library in the context of industrial demonstrations for this project.\footnote{\url{https://github.com/norlab-ulaval/norlab_controllers}}
 Such controllers are based on the~\ac{MPC} algorithm, enabling high-speed path following with low tracking error.
 In our case, we have implemented a simplified version of the slip-aware~\ac{MPC} controlled proposed by~\citet{Hewing2020}.
-Since the motion model acts as an interchangeable module for such controllers, the prediction accuracy improvements reached through our work on the~\ac{DRIVE} protocol will most likely improve~\ac{MPC} path following performance.
+Since the motion model acts as an interchangeable module for such controllers, the prediction accuracy improvements reached through our work on the~\ac{DRIVE} protocol will most likely improve the~\ac{MPC} path following performance.
 A last interesting result would be to quantify the path following error improvement reached through training the slip learning model with a~\ac{DRIVE}-gathered training dataset instead of manual driving.
 Typically, human driving data is limited in driving velocity since it is the first time for which the vehicle navigated the target trajectory.
 Our hypothesis is that by training the model through~\ac{DRIVE}, path following performance at high speed is improved as soon as the first time the~\ac{UGV} executes the desired trajectory.
@@ -381,6 +381,17 @@ Our hypothesis is that by training the model through~\ac{DRIVE}, path following 
 In this section, a plan for the upcoming steps for this thesis is presented. 
 A Gantt chart is shown in~\autoref{fig:gantt}, providing visual support for the planning presented.
 The remaining work is split into three main categories, namely thesis writing, \emph{ICRA} paper finalization and thesis review and defense.
+The thesis will be written via article insertion, where the articles selected are presented in~\autoref{sec:first_author}.
+This task will require appending every article which will represent a distinct thesis chapter.
+Mathematical notation will be modified to be uniform for all articles and facilitate thesis reading and review.
+Then, I will write on writing the final chapter, which will present the results of the experiments described in~\autoref{sec:future_work}.
+My plan is to invest half days on thesis writing and the other half days on final experiments to maintain motivation through the writing process.
+%For these final experiments, I will focus on dynamic modeling during the first two months since the data is already recorded and the result can be produced generally faster.
+%Then, when winter comes, I will record the data for the hard and deep snow experiments and produce the results in the first two months of 2024.
+Final chapter writing will be done after those last experiments are conducted.
+%An optional extra paper will be written between the initial thesis submission and thesis defense if the final results are conclusive and time allows.
+%For this work, the target publication venue will most likely be~\emph{IEEE Robotics and Automation Letters (RAL)}.\footnote{\url{https://www.ieee-ras.org/publications/ra-l}}
+
 \setlength{\fboxsep}{9pt}
 \begin{figure}[h!]
 	\centering
@@ -389,17 +400,6 @@ The remaining work is split into three main categories, namely thesis writing, \
 	\label{fig:gantt}
 \end{figure}
 \setlength{\fboxsep}{12pt}
-
-The thesis will be written via article insertion, where the articles selected are presented in~\autoref{sec:first_author}.
-This task will require appending every article which will represent a distinct thesis chapter.
-Mathematical notation will be modified to be uniform for all articles and facilitate thesis reading and review.
-Then, I will write on writing the final chapter, which will present the results of the experiments described in~\autoref{sec:future_work}.
-My planning is to invest half days on thesis writing and the other half days on final experiments to maintain motivation through the writing process.
-%For these final experiments, I will focus on dynamic modeling during the first two months since the data is already recorded and the result can be produced generally faster.
-%Then, when winter comes, I will record the data for the hard and deep snow experiments and produce the results in the first two months of 2024.
-Final chapter writing will be done after those last experiments are conducted.
-%An optional extra paper will be written between the initial thesis submission and thesis defense if the final results are conclusive and time allows.
-%For this work, the target publication venue will most likely be~\emph{IEEE Robotics and Automation Letters (RAL)}.\footnote{\url{https://www.ieee-ras.org/publications/ra-l}}
 
 Furthermore, since our work on~\ac{DRIVE} is undergoing the peer review process, we will receive the results in January 2024.
 Paper improvements will need to be prioritized at this time for paper re-submission which will most likely be due at the end of January 2024.
@@ -422,7 +422,7 @@ Meanwhile, I have taken part in an additional four papers as a co-author.
 This scientific production will represent the majority of the content of my article insertion thesis.
 
 For the last chapter of the thesis, I have identified three last experiments which would be relatively simple to complete considering the amount of work already completed.
-Providing these results are conclusive, they will be added in the final chapter of my thesis.
+Providing these results are conclusive, they will be added to the final chapter of my thesis.
 The initial thesis submission is scheduled for March 2024, leading to the defense in August 2024 according to Université Laval standards.
 
 
