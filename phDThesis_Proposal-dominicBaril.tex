@@ -52,6 +52,8 @@
 
 \usepackage{longtable}
 
+\usepackage[final]{pdfpages}
+
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{20pt}%
             {-2.5ex\@plus -1ex \@minus -.25ex}%
@@ -384,7 +386,7 @@ The remaining work is split into three main categories, namely thesis writing, \
 The thesis will be written via article insertion, where the articles selected are presented in~\autoref{sec:first_author}.
 This task will require appending every article which will represent a distinct thesis chapter.
 Mathematical notation will be modified to be uniform for all articles and facilitate thesis reading and review.
-Then, I will write on writing the final chapter, which will present the results of the experiments described in~\autoref{sec:future_work}.
+Then, I will work on writing the final chapter, which will present the results of the experiments described in~\autoref{sec:future_work}.
 My plan is to invest half days on thesis writing and the other half days on final experiments to maintain motivation through the writing process.
 %For these final experiments, I will focus on dynamic modeling during the first two months since the data is already recorded and the result can be produced generally faster.
 %Then, when winter comes, I will record the data for the hard and deep snow experiments and produce the results in the first two months of 2024.
@@ -428,7 +430,12 @@ The initial thesis submission is scheduled for March 2024, leading to the defens
 
 % ---------------------------------------------------------------
 \printbibliography
-%\newpage
+\newpage
+
+% ---------------------------------------------------------------
+\includepdf[pages=-, offset=35 -60]{papers/Evaluation_of_Skid-Steering_Kinematic_Models_for_Subarctic_Environments.pdf}
+\includepdf[pages=-, offset=35 -60]{papers/DRIVE_Data-driven_Robot_Input_Vector_Exploration.pdf}
+\includepdf[pages=-, offset=40 -60]{papers/Kilometer-scale_autonomous_navigation.pdf}
 
 % ---------------------------------------------------------------
 %\begin{landscape}
